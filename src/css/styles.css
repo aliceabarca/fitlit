@@ -1,5 +1,61 @@
-body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-  background-repeat: no-repeat;
-  height: 100%;
+* {
+  border: 0;
 }
+
+body, html {
+  background-image: url(../images/kendal-hnysCJrPpkc-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  margin: 0;
+}
+
+main {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+  width: 33.3%;
+}
+
+section {
+  background-color: rgba(217,217,217,.26);
+  border: solid #ff50a5 3px;
+  border-radius: 8px;
+  box-shadow: #ff50a5;
+  width: 90%;
+  margin: 5%;
+}
+
+.activity-box {
+  height: 90%;
+}
+
+.water-box {
+  height: 35%;
+}
+
+.sleep-box {
+  margin-top: 0;
+  height: 50%;
+}
+
+.user-box {
+  margin-top: 0;
+  height: 85%;
+}
+
+.step-circle {
+  height: 40vh;
+  width: 40vw;
+
+}
+
+
