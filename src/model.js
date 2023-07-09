@@ -9,7 +9,7 @@ export function getAverageWater(hydrationData, id) {
    return 0;
   }
 
-  return userData.reduce((sum, date) => sum + date.numOunces, 0) / userData.length;
+  return Math.round(userData.reduce((sum, date) => sum + date.numOunces, 0) / userData.length);
 }
 
 export function getDailyWater(hydrationData, id, date) {
