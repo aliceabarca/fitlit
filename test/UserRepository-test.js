@@ -32,11 +32,15 @@ describe('hydrationData', () => {
   })
 
   it('should return a number of average all time water intake', () => {
-    const id = 1;
-
-    const water = getAverageWater(hydrationData, id)
+    const water = getAverageWater(hydrationData, 1);
 
     expect(water).to.be.a('number');
     expect(water).to.equal(33);
+  })
+
+  it('should return 0 if no user data is found', () => {
+    const water = getAverageWater(hydrationData, 4);
+
+    expect(water).to.equal(0);
   })
 })
