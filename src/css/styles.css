@@ -32,19 +32,27 @@ section {
   box-shadow: #ff50a5;
   width: 90%;
   margin: 5%;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .activity-box {
   height: 90%;
+  margin-right: 0;
+
 }
 
 .water-box {
   height: 35%;
+  margin-right: 0;
 }
 
 .sleep-box {
   margin-top: 0;
   height: 50%;
+  margin-right: 0;
 }
 
 .user-box {
@@ -52,10 +60,19 @@ section {
   height: 85%;
 }
 
-.step-circle {
-  height: 40vh;
-  width: 40vw;
-
+.steps-circle {
+  margin-top: 15%;
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
 }
 
+.friends-box,
+.data-box {
+  height: 40%;
+}
+
+.friends-box {
+  margin-top: 0;
+}
 
