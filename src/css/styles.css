@@ -54,6 +54,22 @@ section {
   margin-right: 0;
 }
 
+h1 {
+  font-family: 'Neonderthaw', cursive;
+  font-size: 90px;
+  color: #fab5d7;
+  text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px rgb(242, 171, 214),
+    0 0 82px #f09,
+    0 0 92px rgb(240, 61, 168),
+    0 0 102px #f09,
+    0 0 151px #f09;
+    animation: pulsate 0.5s ease-in-out infinite alternate; 
+}
+
 .user-box {
   margin-top: 0;
   height: 85%;
@@ -75,3 +91,27 @@ section {
   margin-top: 0;
 }
 
+@keyframes pulsate {
+  100% {
+    text-shadow:
+      0 0 4px #fff,
+      0 0 11px #fff,
+      0 0 19px #fff,
+      0 0 40px #f09,
+      0 0 80px #f09,
+      0 0 90px #f09,
+      0 0 100px #f09,
+      0 0 150px #f09;
+  }
+ 0% {
+    text-shadow:
+      0 0 4px #fff,
+      0 0 10px #fff,
+      0 0 18px #fff,
+      0 0 38px #f09,
+      0 0 73px #f09,
+      0 0 80px #f09,
+      0 0 94px #f09,
+      0 0 140px #f09;
+  }
+}

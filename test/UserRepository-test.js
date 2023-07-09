@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 
-import sampleData from '../src/data/sampleData'
+import sampleData from '../src/data/sampleData';
 
-import { getUserData, getAllAvgSteps } from '../src/model';
+import { getUserData, getAllAvgSteps, getRandomIndex } from '../src/model';
 
 describe('user data', () => {
   let userData;
@@ -25,15 +25,16 @@ describe('user data', () => {
 });
 
 describe('user data', () => {
-  let average;
+  let average, randomIdx;
 
   beforeEach('init data', () => {
     average = getAllAvgSteps(sampleData.users);
-    
+    randomIdx = getRandomIndex(sampleData.users);
   });
 
   it('should return the average of all step goals', () => {
-    expect(average).to.equal(6000)
+    expect(average).to.equal(6000);
   });
-});
 
+  
+});
