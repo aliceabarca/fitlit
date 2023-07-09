@@ -2,7 +2,7 @@ import { expect } from 'chai';
 
 import sampleData from '../src/data/sampleData'
 
-import { getUserData } from '../src/userRepository';
+import { getUserData, getAverageWater } from '../src/model';
 
 describe('usersData', () => {
   let userData;
