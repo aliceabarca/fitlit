@@ -23,3 +23,33 @@ describe('usersData', () => {
     });
   });
 });
+
+describe('hydrationData', () => {
+  let hydrationData;
+
+  beforeEach('init hydrationData', () => {
+    hydrationData = [
+      {
+      "userID": 1,
+      "date": "2023/03/24",
+      "numOunces": 28
+      },
+      {
+      "userID": 2,
+      "date": "2023/03/24",
+      "numOunces": 35
+      },  
+      {
+      "userID": 1,
+      "date": "2023/03/26",
+      "numOunces": 21
+      },
+      {
+      "userID": 2,
+      "date": "2023/03/26",
+      "numOunces": 88
+      }
+    ];
+  })
+
+})
