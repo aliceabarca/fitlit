@@ -28,4 +28,26 @@ export default {
       friends: [31, 16, 15, 7],
     },
   ],
+  hydration: [
+    {
+      "userID": 1,
+      "date": "2023/03/24",
+      "numOunces": 28
+    },
+    {
+      "userID": 2,
+      "date": "2023/03/24",
+      "numOunces": 35
+    },  
+    {
+      "userID": 1,
+      "date": "2023/03/26",
+      "numOunces": 21
+    },
+    {
+      "userID": 2,
+      "date": "2023/03/26",
+      "numOunces": 88
+    }
+  ]
 };
