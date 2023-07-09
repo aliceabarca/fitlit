@@ -38,7 +38,12 @@ export default {
       "userID": 2,
       "date": "2023/03/24",
       "numOunces": 35
-    },  
+    },
+    {
+      "userID": 1,
+      "date": "2023/03/25",
+      "numOunces": 50
+    },
     {
       "userID": 1,
       "date": "2023/03/26",
@@ -51,8 +56,30 @@ export default {
     },
     {
       "userID": 1,
-      "date": "2023/03/25",
-      "numOunces": 50
-    }
+      "date": "2023/05/27",
+      "numOunces": 22
+    },
+    {
+      "userID": 1,
+      "date": "2023/05/28",
+      "numOunces": 38
+    },
+    {
+      "userID": 1,
+      "date": "2023/05/29",
+      "numOunces": 96
+    },
+    {
+      "userID": 1,
+      "date": "2023/05/30",
+      "numOunces": 20
+    },
+    {
+      "userID": 1,
+      "date": "2023/05/31",
+      "numOunces": 86
+    },
+
+
   ]
 };
