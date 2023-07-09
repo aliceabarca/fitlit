@@ -43,4 +43,11 @@ describe('hydrationData', () => {
 
     expect(water).to.equal(0);
   })
+
+  it('should return a number for the amount of ounces a user has consumed on a specific day', () => {
+    const water = getDailyWater(hydrationData, 1, '2023/03/26');
+
+    expect(water).to.be.a('number');
+    expect(water).to.equal(21);
+  })
 })
