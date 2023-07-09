@@ -8,6 +8,13 @@ export function getAllAvgSteps(users) {
   );
 }
 
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
+export function getRandomUser(users) {
+  return users[getRandomIndex(users)];
+}
 
 export function getAverageWater(hydrationData, id) {
   const userData = hydrationData.filter(data => data.userID === id); 
