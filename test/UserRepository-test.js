@@ -2,7 +2,7 @@ import { expect } from 'chai';
 
 import sampleData from '../src/data/sampleData'
 
-import { getUserData, getAverageWater } from '../src/model';
+import { getUserData, getAverageWater, getDailyWater } from '../src/model';
 
 describe('usersData', () => {
   let userData;
@@ -35,7 +35,7 @@ describe('hydrationData', () => {
     const water = getAverageWater(hydrationData, 1);
 
     expect(water).to.be.a('number');
-    expect(water).to.equal(33);
+    expect(water).to.equal(45);
   })
 
   it('should return 0 if no user data is found', () => {
@@ -52,8 +52,24 @@ describe('hydrationData', () => {
   })
 
   it('should return a 0 if no user data is found for that date', () => {
-    const water = getDailyWater(hydrationData, 1, '2023/03/28');
+    const water = getDailyWater(hydrationData, 1, '2023/04/28');
 
     expect(water).to.equal(0);
+  })
+
+  it('should return a object with ounces of water for the last 7 days', () => {
+    const water = getWeeklyWater(hydrationData, 1, '2023/03/31');
+
+    expect(water).to.be.an('object');
+    expect(water).to.deep.equal(
+      {
+        '2023/03/31': 86,
+        '2023/03/30': 20,
+        '2023/03/29': 96,
+        '2023/03/28': 38,
+        '2023/03/27': 22,
+        '2023/03/26': 21,
+        '2023/02/25': 50
+      });
   })
 })
