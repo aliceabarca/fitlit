@@ -31,7 +31,7 @@ export default {
   hydration: [
     {
       "userID": 1,
-      "date": "2023/03/24",
+      "date": "2023/03/23",
       "numOunces": 28
     },
     {
@@ -41,7 +41,7 @@ export default {
     },
     {
       "userID": 1,
-      "date": "2023/03/25",
+      "date": "2023/03/24",
       "numOunces": 50
     },
     {
@@ -80,6 +80,6 @@ export default {
       "numOunces": 86
     },
 
-    
+
   ]
 };
