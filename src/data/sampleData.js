@@ -6,7 +6,7 @@ export default {
       address: '9484 Lucas Flat, West Kittymouth WA 67504',
       email: 'Taurean_Pollich31@gmail.com',
       strideLength: 4,
-      dailyStepGoal: 7000,
+      dailyStepGoal: 6000,
       friends: [5, 43, 46, 11],
     },
     {

@@ -2,9 +2,10 @@ import { expect } from 'chai';
 
 import sampleData from '../src/data/sampleData'
 
-import { getUserData, getAverageWater, getDailyWater, getWeeklyWater } from '../src/model';
+import { getUserData,getAllAvgSteps, getAverageWater, getDailyWater, getWeeklyWater } from '../src/model';
 
-describe('usersData', () => {
+
+describe('user data', () => {
   let userData;
 
   beforeEach('init userData', () => {
@@ -18,11 +19,25 @@ describe('usersData', () => {
       address: '9484 Lucas Flat, West Kittymouth WA 67504',
       email: 'Taurean_Pollich31@gmail.com',
       strideLength: 4,
-      dailyStepGoal: 7000,
+      dailyStepGoal: 6000,
       friends: [5, 43, 46, 11],
     });
   });
 });
+
+describe('user data', () => {
+  let average;
+
+  beforeEach('init data', () => {
+    average = getAllAvgSteps(sampleData.users);
+    
+  });
+
+  it('should return the average of all step goals', () => {
+    expect(average).to.equal(6000)
+  });
+});
+
 
 describe('hydrationData', () => {
   let hydrationData;
