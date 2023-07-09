@@ -56,30 +56,30 @@ export default {
     },
     {
       "userID": 1,
-      "date": "2023/05/27",
+      "date": "2023/03/27",
       "numOunces": 22
     },
     {
       "userID": 1,
-      "date": "2023/05/28",
+      "date": "2023/03/28",
       "numOunces": 38
     },
     {
       "userID": 1,
-      "date": "2023/05/29",
+      "date": "2023/03/29",
       "numOunces": 96
     },
     {
       "userID": 1,
-      "date": "2023/05/30",
+      "date": "2023/03/30",
       "numOunces": 20
     },
     {
       "userID": 1,
-      "date": "2023/05/31",
+      "date": "2023/03/31",
       "numOunces": 86
     },
 
-
+    
   ]
 };
