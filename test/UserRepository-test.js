@@ -57,8 +57,8 @@ describe('hydrationData', () => {
     expect(water).to.equal(0);
   })
 
-  it('should return a object with ounces of water for the last 7 days', () => {
-    const water = getWeeklyWater(hydrationData, 1, '2023/03/31');
+  it('should return a object with ounces of water for the last 7 days of data', () => {
+    const water = getWeeklyWater(hydrationData, 1);
 
     expect(water).to.be.an('object');
     expect(water).to.deep.equal(
@@ -69,7 +69,19 @@ describe('hydrationData', () => {
         '2023/03/28': 38,
         '2023/03/27': 22,
         '2023/03/26': 21,
-        '2023/03/25': 50
+        '2023/03/24': 50
       });
+  })
+
+  it('should return an object holding all possible elements if there are less than 7', () => {
+    const water = getWeeklyWater(hydrationData, 2);
+
+    expect(water).to.deep.equal({ '2023/03/26': 88, '2023/03/24': 35 })
+  })
+
+  it('should return an empty object id no user data exists', () => {
+    const water = getWeeklyWater(hydrationData, 3);
+
+    expect(water).to.deep.equal({});
   })
 })
