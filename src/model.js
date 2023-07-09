@@ -11,3 +11,13 @@ export function getAverageWater(hydrationData, id) {
 
   return userData.reduce((sum, date) => sum + date.numOunces, 0) / userData.length;
 }
+
+export function getDailyWater(hydrationData, id, date) {
+  const userData = hydrationData.find(data => data.userID === id && data.date === date);
+
+  if (!userData) {
+    return 0;
+  }
+
+  return userData.numOunces
+}
