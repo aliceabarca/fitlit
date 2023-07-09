@@ -21,3 +21,15 @@ export function getDailyWater(hydrationData, id, date) {
 
   return userData.numOunces
 }
+
+export function getWeeklyWater(hydrationData, id) {
+  const userData = hydrationData.filter(data => data.userID === id);
+
+  const week = {};
+
+  for(var i = -1; i > -8; i--) {
+   week[userData[userData.length + i].date] = userData[userData.length + i].numOunces;
+  }
+
+  return week;
+}
