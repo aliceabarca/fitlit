@@ -2,7 +2,7 @@ import { expect } from 'chai';
 
 import sampleData from '../src/data/sampleData'
 
-import { getUserData, getAverageWater, getDailyWater } from '../src/model';
+import { getUserData, getAverageWater, getDailyWater, getWeeklyWater } from '../src/model';
 
 describe('usersData', () => {
   let userData;
@@ -69,7 +69,7 @@ describe('hydrationData', () => {
         '2023/03/28': 38,
         '2023/03/27': 22,
         '2023/03/26': 21,
-        '2023/02/25': 50
+        '2023/03/25': 50
       });
   })
 })
