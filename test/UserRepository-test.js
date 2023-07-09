@@ -50,4 +50,10 @@ describe('hydrationData', () => {
     expect(water).to.be.a('number');
     expect(water).to.equal(21);
   })
+
+  it('should return a 0 if no user data is found for that date', () => {
+    const water = getDailyWater(hydrationData, 1, '2023/03/28');
+
+    expect(water).to.equal(0);
+  })
 })
