@@ -28,13 +28,15 @@ describe('hydrationData', () => {
   let hydrationData;
 
   beforeEach('init hydrationData', () => {
-   hydrationData = getUserData(sampleData.hydration, 1)
+   hydrationData = sampleData.hydration;
   })
 
-  it('should return a number for water intake', () => {
-    const userID = 1;
-    const data = '2023/03/24';
+  it('should return a number of average all time water intake', () => {
+    const id = 1;
 
-    const water = getDailyWater(getUserData(hydrationData))
+    const water = getAverageWater(hydrationData, id)
+
+    expect(water).to.be.a('number');
+    expect(water).to.equal(33);
   })
 })
