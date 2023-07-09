@@ -27,9 +27,17 @@ export function getWeeklyWater(hydrationData, id) {
 
   const week = {};
 
-  for(var i = -1; i > -8; i--) {
-   week[userData[userData.length + i].date] = userData[userData.length + i].numOunces;
-  }
+  if (userData.length === 0) {
+    return week;
+  } else if (userData.length < 7) {
+    for (var i = -1; (userData.length + i) >= 0; i--) {
+      week[userData[userData.length + i].date] = userData[userData.length + i].numOunces;
+    }
+  } else {
+    for (var i = -1; i > -8 ; i--) {
+      week[userData[userData.length + i].date] = userData[userData.length + i].numOunces;
+     }
+  } 
 
   return week;
 }
