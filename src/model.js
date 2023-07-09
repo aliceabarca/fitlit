@@ -8,6 +8,10 @@ export function getAllAvgSteps(users) {
   );
 }
 
-export function getRandomIndex(array) {
-  return Math.round(Math.random(array.length));
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
+export function getRandomUser(users) {
+  return users[getRandomIndex(users)];
 }
