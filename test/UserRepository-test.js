@@ -1,14 +1,16 @@
 import { expect } from 'chai';
 
-import sampleData from '../src/data/sampleData'
+import sampleData from '../src/data/sampleData';
 
-import { getUserData, getAllAvgSteps } from '../src/model';
+import { getUserData, getAllAvgSteps, getRandomUser } from '../src/model';
 
-describe('user data', () => {
-  let userData;
+describe('user data functions', () => {
+  let userData, average, user;
 
-  beforeEach('init userData', () => {
+  beforeEach('init data', () => {
     userData = getUserData(sampleData.users, 1);
+    average = getAllAvgSteps(sampleData.users);
+    user = getRandomUser(sampleData.users);
   });
 
   it('should return an object of user data', () => {
@@ -22,18 +24,12 @@ describe('user data', () => {
       friends: [5, 43, 46, 11],
     });
   });
-});
-
-describe('user data', () => {
-  let average;
-
-  beforeEach('init data', () => {
-    average = getAllAvgSteps(sampleData.users);
-    
-  });
 
   it('should return the average of all step goals', () => {
-    expect(average).to.equal(6000)
+    expect(average).to.equal(6000);
   });
-});
 
+  it('should return a random user object from the array', () => {
+    expect(sampleData.users).to.deep.include(user);
+  })
+});
