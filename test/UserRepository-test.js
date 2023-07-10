@@ -2,7 +2,7 @@ import { expect } from 'chai';
 
 import sampleData from '../src/data/sampleData';
 
-import { getUserData, getAllAvgSteps, getRandomUser, getAverageWater, getDailyWater, getWeeklyWater } from '../src/model';
+import { getUserData, getAllAvgSteps, getRandomUser, getAverageWater, getDailyWater, getWeeklyWater, getUserHydrationData } from '../src/model';
 
 describe('user data functions', () => {
   let userData, average, user;
@@ -39,17 +39,20 @@ describe('hydrationData', () => {
 
   beforeEach('init hydrationData', () => {
    hydrationData = sampleData.hydration;
+   
   })
 
   it('should return a number of average all time water intake', () => {
-    const water = getAverageWater(hydrationData, 1);
+    const userData = getUserHydrationData(hydrationData, 1)
+    const water = getAverageWater(userData);
 
     expect(water).to.be.a('number');
     expect(water).to.equal(45);
   })
 
   it('should return 0 if no user data is found', () => {
-    const water = getAverageWater(hydrationData, 4);
+    const userData = getUserHydrationData(hydrationData, 4)
+    const water = getAverageWater(userData);
 
     expect(water).to.equal(0);
   })
@@ -68,7 +71,8 @@ describe('hydrationData', () => {
   })
 
   it('should return a object with ounces of water for the last 7 days of data', () => {
-    const water = getWeeklyWater(hydrationData, 1);
+    const userData = getUserHydrationData(hydrationData, 1)
+    const water = getWeeklyWater(userData);
 
     expect(water).to.be.an('object');
     expect(water).to.deep.equal(
@@ -84,13 +88,15 @@ describe('hydrationData', () => {
   })
 
   it('should return an object holding all possible elements if there are less than 7', () => {
-    const water = getWeeklyWater(hydrationData, 2);
+    const userData = getUserHydrationData(hydrationData, 2)
+    const water = getWeeklyWater(userData);
 
     expect(water).to.deep.equal({ '2023/03/26': 88, '2023/03/24': 35 })
   })
 
   it('should return an empty object id no user data exists', () => {
-    const water = getWeeklyWater(hydrationData, 3);
+    const userData = getUserHydrationData(hydrationData, 3)
+    const water = getWeeklyWater(userData);
 
     expect(water).to.deep.equal({});
   })
