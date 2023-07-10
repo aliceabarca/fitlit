@@ -7,7 +7,7 @@ export function showUserData(user) {
     name: document.querySelector('.name'),
     address: document.querySelector('.address'),
     email: document.querySelector('.email'),
-  }
+  };
 
   userInfo.name.innerText = `Name: ${user.name}`;
   userInfo.address.innerText = `Address: ${user.address}`;
