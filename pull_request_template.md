@@ -2,13 +2,13 @@
 
 Did this break anything?
 
-- [x] No
+- [ ] No
 - [ ]  Yes
 
 Type of change
 
 - [ ] New feature (non-breaking change which adds functionality)
-- [x]  Styling 
+- [ ]  Styling 
 - [ ]  Bug fix (non-breaking change which fixes an issue)
 - [ ]  Refactor(DRY-ing up/ reorganizing code, etc.)
 - [ ]  Super small fix (Corrected a typo, removed a comment, etc.)
@@ -17,10 +17,10 @@ Type of change
 Checklist:
 
 - [ ]  If this code needs to be tested, all tests are passing
-- [x]  The code runs locally
+- [ ]  The code runs locally
 - [ ]  There are comments where clarification/ organization is needed
-- [x]  The code is DRY. If it's not, I tried my best
-- [x]  I reviewed my code before pushing
+- [ ]  The code is DRY. If it's not, I tried my best
+- [ ]  I reviewed my code before pushing
 
 What's next?
 Once we get the user data implented we can style that data to match the rest of the app. 
