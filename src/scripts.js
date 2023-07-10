@@ -4,9 +4,21 @@ import { displayUsersName } from './domUpdates';
 
 // An example of how you tell webpack to use a CSS file
 import './css/styles.css';
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png';
-
-// An example of how you tell webpack to use a JS file
+import { showUserData, showUserStepsVsAvg } from './domUpdates';
+import { getRandomUser, getUserStepGoal, getAllAvgSteps } from './model';
 import userData from './data/users';
+import hydrationData from './data/hydration';
+
+const store = {
+  userData: userData.users,
+  hydrationData: hydrationData.hydrationData,
+  user: getRandomUser(userData.users),
+};
+
+window.onload = () => {
+  const userSteps = store.user.dailyStepGoal;
+  const avg = getAllAvgSteps(store.userData);
+
+  showUserData(store.user);
+  showUserStepsVsAvg(userSteps, avg);
+};
