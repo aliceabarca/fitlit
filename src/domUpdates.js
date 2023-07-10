@@ -1,20 +1,12 @@
-const userInfo = document.querySelector('.data-box');
-const userStepsEl = document.querySelector('.user-steps .steps');
-const avgStepsEl = document.querySelector('.avg-steps .steps');
-
 import users from "./data/users";
 import { getUserData } from "./model";
 
-// ---- querySelectors
-let usersName = document.querySelector('h2');
+const userInfo = document.querySelector('.data-box');
+const userStepsEl = document.querySelector('.user-steps .steps');
+const avgStepsEl = document.querySelector('.avg-steps .steps');
+const usersName = document.querySelector('h2');
 
-// ---- eventListeners 
-window.addEventListener('load', displayUsersName());
-
-// ---- functions
-export function displayUsersName() {
-  const user = getUserData(users.users, 1)
-  console.log(user)
+export function displayUsersName(user) {
   usersName.innerText = `Hello, ${user.name}!`;
 }
 

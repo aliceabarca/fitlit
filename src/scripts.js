@@ -21,4 +21,5 @@ window.onload = () => {
 
   showUserData(store.user);
   showUserStepsVsAvg(userSteps, avg);
+  displayUsersName(store.user);
 };
