@@ -15,3 +15,38 @@ function getRandomIndex(array) {
 export function getRandomUser(users) {
   return users[getRandomIndex(users)];
 }
+
+export function getAverageWater(userData) {  
+  if (!userData.length) {
+   return 0;
+  }
+
+  return Math.round(userData.reduce((sum, date) => sum + date.numOunces, 0) / userData.length);
+}
+
+export function getDailyWater(hydrationData, id, date) {
+  const userData = hydrationData.find(data => data.userID === id && data.date === date);
+
+  if (!userData) {
+    return 0;
+  }
+
+  return userData.numOunces
+}
+
+export function getUserHydrationData(hydrationData, id) {
+  return hydrationData.filter(data => data.userID === id);
+}
+
+export function getWeeklyWater(userData) {
+  if (userData.length > 7) {
+    userData = userData.slice(-7);
+  }
+
+ userData.sort((a,b) => new Date(b.date) - new Date(a.date))
+
+  return userData.reduce((week, day) => {
+    week[day.date] = day.numOunces;
+    return week;
+  }, {})
+}
