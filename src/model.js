@@ -1,13 +1,14 @@
 export function getUserData(users, id) {
+  console.log(id)
   return users.find(user => user.id === id);
 }
 
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+function getRandomID(array) {
+  return Math.floor(Math.random() * array.length) + 1;
 }
 
 export function getRandomUser(users) {
-  return getUserData(users, getRandomIndex(users));
+  return getUserData(users, getRandomID(users));
 }
 
 export function getAllAvgSteps(users) {
