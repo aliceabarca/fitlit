@@ -2,12 +2,12 @@ export function getUserData(users, id) {
   return users.find(user => user.id === id);
 }
 
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+function getRandomID(array) {
+  return Math.floor(Math.random() * array.length) + 1;
 }
 
 export function getRandomUser(users) {
-  return getUserData(users, getRandomIndex(users));
+  return getUserData(users, getRandomID(users));
 }
 
 export function getAllAvgSteps(users) {
@@ -20,22 +20,26 @@ export function getUserStepGoal(user) {
   return user.dailyStepGoal;
 }
 
-export function getAverageWater(userData) {  
+export function getAverageWater(userData) {
   if (!userData.length) {
-   return 0;
+    return 0;
   }
 
-  return Math.round(userData.reduce((sum, date) => sum + date.numOunces, 0) / userData.length);
+  return Math.round(
+    userData.reduce((sum, date) => sum + date.numOunces, 0) / userData.length,
+  );
 }
 
 export function getDailyWater(hydrationData, id, date) {
-  const userData = hydrationData.find(data => data.userID === id && data.date === date);
+  const userData = hydrationData.find(
+    data => data.userID === id && data.date === date,
+  );
 
   if (!userData) {
     return 0;
   }
 
-  return userData.numOunces
+  return userData.numOunces;
 }
 
 export function getUserHydrationData(hydrationData, id) {
@@ -47,11 +51,10 @@ export function getWeeklyWater(userData) {
     userData = userData.slice(-7);
   }
 
- userData.sort((a,b) => new Date(b.date) - new Date(a.date))
+  userData.sort((a, b) => new Date(b.date) - new Date(a.date));
 
   return userData.reduce((week, day) => {
     week[day.date] = day.numOunces;
     return week;
-  }, {})
+  }, {});
 }
-
