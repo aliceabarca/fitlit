@@ -1,6 +1,9 @@
+import { getDailyWater } from './model'
 const userInfo = document.querySelector('.data-box');
 const userStepsEl = document.querySelector('.user-steps .steps');
 const avgStepsEl = document.querySelector('.avg-steps .steps');
+const waterIntake = document.querySelector('.water-intake')
+
 
 export function showUserData(user) {
   const userInfo = {
@@ -17,4 +20,8 @@ export function showUserData(user) {
 export function showUserStepsVsAvg(userSteps, avg) {
   userStepsEl.innerText = userSteps;
   avgStepsEl.innerText = avg;
+}
+
+export function showCurrentDayWaterIntake(userHydrationData, date) {
+  waterIntake.innerText = `${getDailyWater(userHydrationData, date)}`
 }
