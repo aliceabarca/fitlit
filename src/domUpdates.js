@@ -7,7 +7,8 @@ const avgStepsEl = document.querySelector('.avg-steps .steps');
 const usersName = document.querySelector('h2');
 
 export function displayUsersName(user) {
-  usersName.innerText = `Hello, ${user.name}!`;
+  const firstName = user.name.split(' ')[0]
+  usersName.innerText = `Hello, ${firstName}!`;
 }
 
 export function showUserData(user) {
