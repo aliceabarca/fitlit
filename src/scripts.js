@@ -1,6 +1,6 @@
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
-
+import { displayUsersName } from './domUpdates';
 
 // An example of how you tell webpack to use a CSS file
 import './css/styles.css';
