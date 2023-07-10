@@ -1,5 +1,4 @@
 export function getUserData(users, id) {
-  console.log(id);
   return users.find(user => user.id === id);
 }
 
