@@ -77,14 +77,31 @@ describe('hydrationData', () => {
     expect(water).to.be.an('object');
     expect(water).to.deep.equal(
       {
-        '2023/03/31': 86,
-        '2023/03/30': 20,
-        '2023/03/29': 96,
-        '2023/03/28': 38,
-        '2023/03/27': 22,
+        '2023/03/24': 50,
         '2023/03/26': 21,
-        '2023/03/24': 50
+        '2023/03/27': 22,
+        '2023/03/28': 38,
+        '2023/03/29': 96,
+        '2023/03/30': 20,
+        '2023/03/31': 86
       });
+  })
+
+  it('should have keys in order from least to most recent', () => {
+    const userData = getUserHydrationData(hydrationData, 1)
+    const water = getWeeklyWater(userData);
+
+    const waterDates = Object.keys(water);
+
+    expect(waterDates).to.deep.equal([
+      '2023/03/24',
+      '2023/03/26',
+      '2023/03/27',
+      '2023/03/28',
+      '2023/03/29',
+      '2023/03/30',
+      '2023/03/31'
+    ])
   })
 
   it('should return an object holding all possible elements if there are less than 7', () => {
