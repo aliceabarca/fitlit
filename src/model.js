@@ -43,6 +43,8 @@ export function getWeeklyWater(userData) {
     userData = userData.slice(-7);
   }
 
+ userData.sort((a,b) => new Date(b.date) - new Date(a.date))
+
   return userData.reduce((week, day) => {
     week[day.date] = day.numOunces;
     return week;
