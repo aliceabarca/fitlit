@@ -1,6 +1,14 @@
+import users from "./data/users";
+import { getUserData } from "./model";
+
 const userInfo = document.querySelector('.data-box');
 const userStepsEl = document.querySelector('.user-steps .steps');
 const avgStepsEl = document.querySelector('.avg-steps .steps');
+const usersName = document.querySelector('h2');
+
+export function displayUsersName(user) {
+  usersName.innerText = `Hello, ${user.name}!`;
+}
 
 export function showUserData(user) {
   const userInfo = {
