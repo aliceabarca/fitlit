@@ -1,6 +1,6 @@
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
-import { displayUsersName } from './domUpdates';
+import { displayUsersName, showWeeklyWaterIntake } from './domUpdates';
 
 // An example of how you tell webpack to use a CSS file
 import './css/styles.css';
@@ -19,8 +19,9 @@ window.onload = () => {
   const userSteps = store.user.dailyStepGoal;
   const avg = getAllAvgSteps(store.userData);
   const userHydrationData = getUserHydrationData(store.hydrationData, store.user.id)
-  showCurrentDayWaterIntake(userHydrationData, '2023/03/31')
+  showCurrentDayWaterIntake(userHydrationData, '2023/03/31');
   showUserData(store.user);
   showUserStepsVsAvg(userSteps, avg);
   displayUsersName(store.user);
+  showWeeklyWaterIntake(userHydrationData);
 };
