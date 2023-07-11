@@ -23,4 +23,4 @@ Checklist:
 - [ ]  I reviewed my code before pushing
 
 What's next?
-Once we get the user data implented we can style that data to match the rest of the app. 
+
