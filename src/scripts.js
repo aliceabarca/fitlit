@@ -1,4 +1,5 @@
 import { displayUsersName, showWeeklyWaterIntake } from './domUpdates';
+import './images/glass-of-water.png';
 
 import './css/styles.css';
 import {
@@ -6,7 +7,7 @@ import {
   showUserStepsVsAvg,
   showCurrentDayWaterIntake,
 } from './domUpdates';
-import { getRandomUser, getAllAvgSteps, getUserHydrationData } from './model';
+import { getRandomUser, getAllAvgSteps, getUserHydrationData, getDailyWater } from './model';
 import { getApiData } from './apiCalls';
 
 const store = {
@@ -45,7 +46,7 @@ function processUserData() {
     store.hydrationData,
     store.user.id,
   );
-  showCurrentDayWaterIntake(userHydrationData, '2023/03/31');
+  showCurrentDayWaterIntake(getDailyWater(userHydrationData, '2023/03/31'));
   showUserData(store.user);
   showUserStepsVsAvg(userSteps, avg);
   displayUsersName(store.user);
