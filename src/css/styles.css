@@ -49,7 +49,7 @@ h2 {
 h3 {
   font-family: 'Lobster', cursive;
   font-size: 30px;
-  margin-top: 0%;
+  margin: 3%;
 }
 
 .activity-box {
@@ -58,19 +58,26 @@ h3 {
 }
 
 .water-box {
+  display: flex;
+  justify-content: space-evenly;
   height: 35%;
   margin-right: 0;
 }
 
 .todays-water {
-  height: 40%;
+  height: 35%;
   margin-top: 0;
   margin-bottom: 0;
+}
+
+.water-intake {
+  margin-bottom: 9px;
 }
 
 .weekly-water-box {
   height: 90px;
   width: 100%;
+  margin-top: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -80,18 +87,17 @@ h3 {
   height: 40px;
   width: 40px;
   border-radius: 50%;
-  margin: 0;
+  margin-top: 0;
 
   background-color: #f09;
   
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 .date {
-  margin: 0px 0px 3px 0px;
+  margin: 0px 0px 5px 0px;
 
 }
 
@@ -148,12 +154,14 @@ h1 {
   background-color: rgba(217, 217, 217, 0);
   display: flex;
   flex-direction: row;
-  height: 100px;
+  height: 1000px;
+  margin-top: 0;
+  margin-bottom: 10px;
 }
 
 .water {
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
   margin-right: 10px;
 }
 
