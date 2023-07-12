@@ -42,7 +42,7 @@ function showWaterGlasses(ounces){
   let html = '';
 
   for (let i = 0; i < amount; i++) {
-    html += `<img class="water" src="../src/images/glass-of-water.png>"/>`;
+    html += `<img class="water" src="./images/glass-of-water.png"/>`;
   }
 
   glassBox.innerHTML = `${html}`
