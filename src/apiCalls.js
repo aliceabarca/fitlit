@@ -1,7 +1,5 @@
-import { store } from './scripts';
-
-export function getApiData(url) {
+export function getApiData(url, dataKey) {
   return fetch(url)
     .then(response => response.json())
-    .then(data => data);
+    .then(data => data[dataKey]);
 }
