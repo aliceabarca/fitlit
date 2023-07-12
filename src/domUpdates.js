@@ -31,9 +31,9 @@ export function showUserStepsVsAvg(userSteps, avg) {
   avgStepsEl.innerText = avg;
 }
 
-export function showCurrentDayWaterIntake(userHydrationData, date) {
-  showWaterGlasses(getDailyWater(userHydrationData, date))
-  waterIntake.innerText = `Today : ${getDailyWater(userHydrationData, date)} ounces`
+export function showCurrentDayWaterIntake(currentIntake) {
+  showWaterGlasses(currentIntake)
+  waterIntake.innerText = `Today : ${currentIntake} ounces`
 }
 
 function showWaterGlasses(ounces){
