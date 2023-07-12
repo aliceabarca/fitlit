@@ -18,36 +18,36 @@ const store = {
   },
 };
 
-window.onload = () => {
-  initializeApp().then(values => {
-    store.user = getRandomUser(store.userData);
-    const userSteps = store.user.dailyStepGoal;
-    const avg = getAllAvgSteps(store.userData);
-    const userHydrationData = getUserHydrationData(
-      store.hydrationData,
-      store.user.id,
-    );
-    showCurrentDayWaterIntake(userHydrationData, '2023/03/31');
-    showUserData(store.user);
-    showUserStepsVsAvg(userSteps, avg);
-    displayUsersName(store.user);
-    showWeeklyWaterIntake(userHydrationData);
-  });
-};
+window.onload = initializeApp;
 
 function initializeApp() {
-  return Promise.all([
+  Promise.all([
     getApiData(store.apiKeys.users, 'users'),
     getApiData(store.apiKeys.sleep, 'sleepData'),
     getApiData(store.apiKeys.hydration, 'hydrationData'),
     getApiData(store.apiKeys.activity, 'activityData'),
-  ]).then(values => {
-    const [users, sleepData, hydrationData, activityData] = values;
-    store.userData = users;
-    store.sleepData = sleepData;
-    store.hydrationData = hydrationData;
-    store.activityData = activityData;
-    
-    return values
-  });
+  ])
+    .then(values => {
+      const [users, sleepData, hydrationData, activityData] = values;
+      store.userData = users;
+      store.sleepData = sleepData;
+      store.hydrationData = hydrationData;
+      store.activityData = activityData;
+    })
+    .then(processUserData);
+}
+
+function processUserData() {
+  store.user = getRandomUser(store.userData);
+  const userSteps = store.user.dailyStepGoal;
+  const avg = getAllAvgSteps(store.userData);
+  const userHydrationData = getUserHydrationData(
+    store.hydrationData,
+    store.user.id,
+  );
+  showCurrentDayWaterIntake(userHydrationData, '2023/03/31');
+  showUserData(store.user);
+  showUserStepsVsAvg(userSteps, avg);
+  displayUsersName(store.user);
+  showWeeklyWaterIntake(userHydrationData);
 }
