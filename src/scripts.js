@@ -46,7 +46,7 @@ function processUserData() {
     store.hydrationData,
     store.user.id,
   );
-  showCurrentDayWaterIntake(userHydrationData, '2023/03/31');
+  showCurrentDayWaterIntake(getDailyWater(userHydrationData, '2023/03/31'));
   showUserData(store.user);
   showUserStepsVsAvg(userSteps, avg);
   displayUsersName(store.user);
