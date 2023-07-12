@@ -6,6 +6,7 @@ const avgStepsEl = document.querySelector('.avg-steps .steps');
 const waterIntake = document.querySelector('.water-intake')
 const usersName = document.querySelector('h2');
 const weeklyWaterIntake = document.querySelector('.weekly-water-intake');
+const glassBox = document.querySelector('.glass-box')
 
 
 export function displayUsersName(user) {
@@ -31,7 +32,20 @@ export function showUserStepsVsAvg(userSteps, avg) {
 }
 
 export function showCurrentDayWaterIntake(userHydrationData, date) {
-  waterIntake.innerText = `${getDailyWater(userHydrationData, date)}`
+  showWaterGlasses(getDailyWater(userHydrationData, date))
+  waterIntake.innerText = `${getDailyWater(userHydrationData, date)} ounces`
+}
+
+function showWaterGlasses(ounces){
+  const amount = Math.floor(ounces / 10)
+
+  let html = '';
+
+  for (let i = 0; i < amount; i++) {
+    html += `<img class="water" src="../src/images/glass-of-water.png>"/>`;
+  }
+
+  glassBox.innerHTML = `${html}`
 }
 
 export function showWeeklyWaterIntake(userHydrationData) {
