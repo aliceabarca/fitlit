@@ -1,5 +1,5 @@
 
-import { getDailyWater, getWeeklyWater } from "./model";
+import { getWeeklyWater } from "./model";
 const userInfo = document.querySelector('.data-box');
 const userStepsEl = document.querySelector('.user-steps .steps');
 const avgStepsEl = document.querySelector('.avg-steps .steps');
