@@ -9,12 +9,7 @@ import {
   showUserStepsVsAvg,
   showCurrentDayWaterIntake,
 } from './domUpdates';
-import {
-  getRandomUser,
-  getUserStepGoal,
-  getAllAvgSteps,
-  getUserHydrationData,
-} from './model';
+import { getRandomUser, getAllAvgSteps, getUserHydrationData } from './model';
 import { getApiData } from './apiCalls';
 
 const store = {
@@ -43,8 +38,8 @@ window.onload = () => {
     store.activityData = data.activityData;
     return data;
   });
-  Promise.all([users, sleep, hydration, activity])
-  .then(values => {
+
+  Promise.all([users, sleep, hydration, activity]).then(values => {
     store.user = getRandomUser(store.userData);
     const userSteps = store.user.dailyStepGoal;
     const avg = getAllAvgSteps(store.userData);
@@ -57,5 +52,5 @@ window.onload = () => {
     showUserStepsVsAvg(userSteps, avg);
     displayUsersName(store.user);
     showWeeklyWaterIntake(userHydrationData);
-  })
+  });
 };
