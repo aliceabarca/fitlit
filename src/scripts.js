@@ -1,8 +1,5 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
 import { displayUsersName, showWeeklyWaterIntake } from './domUpdates';
 
-// An example of how you tell webpack to use a CSS file
 import './css/styles.css';
 import {
   showUserData,
@@ -22,24 +19,7 @@ const store = {
 };
 
 window.onload = () => {
-  const users = getApiData(store.apiKeys.users).then(data => {
-    store.userData = data.users;
-    return data;
-  });
-  const sleep = getApiData(store.apiKeys.sleep).then(data => {
-    store.sleepData = data.sleepData;
-    return data;
-  });
-  const hydration = getApiData(store.apiKeys.hydration).then(data => {
-    store.hydrationData = data.hydrationData;
-    return data;
-  });
-  const activity = getApiData(store.apiKeys.activity).then(data => {
-    store.activityData = data.activityData;
-    return data;
-  });
-
-  Promise.all([users, sleep, hydration, activity]).then(values => {
+  initializeApp().then(values => {
     store.user = getRandomUser(store.userData);
     const userSteps = store.user.dailyStepGoal;
     const avg = getAllAvgSteps(store.userData);
@@ -54,3 +34,20 @@ window.onload = () => {
     showWeeklyWaterIntake(userHydrationData);
   });
 };
+
+function initializeApp() {
+  return Promise.all([
+    getApiData(store.apiKeys.users, 'users'),
+    getApiData(store.apiKeys.sleep, 'sleepData'),
+    getApiData(store.apiKeys.hydration, 'hydrationData'),
+    getApiData(store.apiKeys.activity, 'activityData'),
+  ]).then(values => {
+    const [users, sleepData, hydrationData, activityData] = values;
+    store.userData = users;
+    store.sleepData = sleepData;
+    store.hydrationData = hydrationData;
+    store.activityData = activityData;
+    
+    return values
+  });
+}
