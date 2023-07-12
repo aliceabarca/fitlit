@@ -5,7 +5,7 @@ const userStepsEl = document.querySelector('.user-steps .steps');
 const avgStepsEl = document.querySelector('.avg-steps .steps');
 const waterIntake = document.querySelector('.water-intake')
 const usersName = document.querySelector('h2');
-const weeklyWaterIntake = document.querySelector('.weekly-water-intake');
+const weeklyWaterIntake = document.querySelector('.weekly-water-box');
 const glassBox = document.querySelector('.glass-box')
 
 
@@ -33,11 +33,15 @@ export function showUserStepsVsAvg(userSteps, avg) {
 
 export function showCurrentDayWaterIntake(userHydrationData, date) {
   showWaterGlasses(getDailyWater(userHydrationData, date))
-  waterIntake.innerText = `${getDailyWater(userHydrationData, date)} ounces`
+  waterIntake.innerText = `Today : ${getDailyWater(userHydrationData, date)} ounces`
 }
 
 function showWaterGlasses(ounces){
   const amount = Math.floor(ounces / 10)
+
+  if (amount > 9) {
+    amount = 9;
+  }
 
   let html = '';
 
@@ -52,6 +56,9 @@ export function showWeeklyWaterIntake(userHydrationData) {
   const weeklyWater = getWeeklyWater(userHydrationData);
   const days = Object.keys(weeklyWater);
   days.forEach(day => {
-    weeklyWaterIntake.innerText += `${day}: ${weeklyWater[day]} \n`
+    weeklyWaterIntake.innerHTML += `<article class="week-day" >
+                                    <p class="date" >${day.slice(5)}</p>
+                                    <p class="weekly-ounces">${weeklyWater[day]}</p>
+                                    </article>`
   }) 
 }
