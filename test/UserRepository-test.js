@@ -126,7 +126,7 @@ describe('hydrationData', () => {
     expect(water).to.deep.equal({ '2023/03/26': 88, '2023/03/24': 35 });
   });
 
-  it('should return an empty object id no user data exists', () => {
+  it('should return an empty object if no user data exists', () => {
     const userData = getUserData('hydrationData', hydrationData, 3);
     const water = getWeeklyWater(userData);
 

@@ -1,14 +1,14 @@
 * {
   border: 0;
+  margin: 0
 }
 
 body,
 html {
+  height: 100%;
   background-image: url(../images/kendal-hnysCJrPpkc-unsplash.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100%;
-  margin: 0;
 }
 
 main {
@@ -18,54 +18,25 @@ main {
 }
 
 div {
+  height: 100%;
+  width: 33.3%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  height: 100%;
-  width: 33.3%;
 }
 
 section {
-  background-color: rgba(217, 217, 217, 0.26);
-  border: solid #ff50a5 3px;
-  border-radius: 8px;
-  box-shadow: 0 0 15px #f09, inset 0 0 10px #fff;
   width: 90%;
   margin: 5%;
+  border: solid #ff50a5 3px;
+  border-radius: 8px;
+  background-color: rgba(217, 217, 217, 0.26);
+  box-shadow: 0 0 15px #f09, inset 0 0 10px #fff;
   display: flex;
   align-items: center;
   flex-direction: column;
   color: #e9c4e0;
-}
-
-h2 {
-  font-family: 'Fasthand', cursive;
-  font-size: 50px;
-  margin: 0;
-  color: #e9c4e0;
-}
-
-h3 {
-  font-family: 'Lobster', cursive;
-  font-size: 30px;
-  margin-top: 0%;
-}
-
-.activity-box {
-  height: 90%;
-  margin-right: 0;
-}
-
-.water-box {
-  height: 35%;
-  margin-right: 0;
-}
-
-.sleep-box {
-  margin-top: 0;
-  height: 50%;
-  margin-right: 0;
 }
 
 h1 {
@@ -78,26 +49,118 @@ h1 {
   animation: pulsate 0.5s ease-in-out infinite alternate;
 }
 
-.user-box {
-  margin-top: 0;
-  height: 85%;
+h2 {
+  font-family: 'Fasthand', cursive;
+  font-size: 50px;
+  color: #e9c4e0;
 }
 
-.data-box {
-  padding-left: 5%;
-  padding-top: 6%;
-  width: 85%;
+h3 {
+  font-family: 'Lobster', cursive;
+  font-size: 30px;
+  margin: 3%;
 }
 
-.data-box article {
-  align-items: flex-start;
+p {
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  margin: 15px 0px;
+  color: #e9c4e0;
+}
+
+
+/* ----------Activity------------- */
+
+.activity-box {
+  height: 90%;
+  margin-right: 0;
 }
 
 .steps-circle {
-  margin-top: 15%;
   height: 250px;
   width: 250px;
+  margin-top: 15%;
   border-radius: 50%;
+}
+
+/* -------------Water--------------*/
+
+.water-box {
+  height: 35%;
+  margin-right: 0;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.todays-water {
+  height: 35%;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.water-intake {
+  margin-bottom: 9px;
+}
+
+.weekly-water-box {
+  height: 90px;
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.weekly-ounces {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin-top: 0;
+  background-color: #f09;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.glass-box {
+  height: 1000px;
+  width: 90%;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.water {
+  height: 30px;
+  width: 30px;
+  margin-right: 10px;
+}
+
+.date {
+  margin: 0px 0px 5px 0px;
+}
+
+/* -------------Sleep--------------*/
+
+.sleep-box {
+  height: 50%;
+  margin-top: 0;
+  margin-right: 0;
+}
+
+/* -------------User--------------*/
+
+.user-box {
+  height: 85%;
+  margin-top: 0;
+}
+
+.data-box {
+  width: 85%;
+  padding-left: 5%;
+  padding-top: 6%;
 }
 
 .friends-box,
@@ -109,11 +172,7 @@ h1 {
   margin-top: 0;
 }
 
-p {
-  font-family: 'Raleway', sans-serif;
-  font-size: 15px;
-  color: #e9c4e0;
-}
+/* ------------Animations------------ */
 
 @keyframes pulsate {
   100% {
