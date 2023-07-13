@@ -1,5 +1,6 @@
 * {
   border: 0;
+  margin: 0
 }
 
 body,
@@ -8,7 +9,6 @@ html {
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
-  margin: 0;
 }
 
 main {
@@ -39,10 +39,19 @@ section {
   color: #e9c4e0;
 }
 
+h1 {
+  font-family: 'Neonderthaw', cursive;
+  font-size: 90px;
+  color: #fab5d7;
+  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff,
+    0 0 42px rgb(242, 171, 214), 0 0 82px #f09, 0 0 92px rgb(240, 61, 168),
+    0 0 102px #f09, 0 0 151px #f09;
+  animation: pulsate 0.5s ease-in-out infinite alternate;
+}
+
 h2 {
   font-family: 'Fasthand', cursive;
   font-size: 50px;
-  margin: 0;
   color: #e9c4e0;
 }
 
@@ -52,10 +61,29 @@ h3 {
   margin: 3%;
 }
 
+p {
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  color: #e9c4e0;
+  margin: 15px 0px;
+}
+
+
+/* ----------Activity------------- */
+
 .activity-box {
   height: 90%;
   margin-right: 0;
 }
+
+.steps-circle {
+  margin-top: 15%;
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+}
+
+/* -------------Water--------------*/
 
 .water-box {
   display: flex;
@@ -96,58 +124,6 @@ h3 {
   align-items: center;
 }
 
-.date {
-  margin: 0px 0px 5px 0px;
-
-}
-
-.sleep-box {
-  margin-top: 0;
-  height: 50%;
-  margin-right: 0;
-}
-
-h1 {
-  font-family: 'Neonderthaw', cursive;
-  font-size: 90px;
-  color: #fab5d7;
-  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff,
-    0 0 42px rgb(242, 171, 214), 0 0 82px #f09, 0 0 92px rgb(240, 61, 168),
-    0 0 102px #f09, 0 0 151px #f09;
-  animation: pulsate 0.5s ease-in-out infinite alternate;
-}
-
-.user-box {
-  margin-top: 0;
-  height: 85%;
-}
-
-.data-box {
-  padding-left: 5%;
-  padding-top: 6%;
-  width: 85%;
-}
-
-.data-box article {
-  align-items: flex-start;
-}
-
-.steps-circle {
-  margin-top: 15%;
-  height: 250px;
-  width: 250px;
-  border-radius: 50%;
-}
-
-.friends-box,
-.data-box {
-  height: 40%;
-}
-
-.friends-box {
-  margin-top: 0;
-}
-
 .glass-box {
   border: 0;
   box-shadow: none;
@@ -165,11 +141,45 @@ h1 {
   margin-right: 10px;
 }
 
-p {
-  font-family: 'Raleway', sans-serif;
-  font-size: 15px;
-  color: #e9c4e0;
+.date {
+  margin: 0px 0px 5px 0px;
 }
+
+/* -------------Sleep--------------*/
+
+.sleep-box {
+  margin-top: 0;
+  height: 50%;
+  margin-right: 0;
+}
+
+/* -------------User--------------*/
+
+.user-box {
+  margin-top: 0;
+  height: 85%;
+}
+
+.data-box {
+  padding-left: 5%;
+  padding-top: 6%;
+  width: 85%;
+}
+
+.data-box article {
+  align-items: flex-start;
+}
+
+.friends-box,
+.data-box {
+  height: 40%;
+}
+
+.friends-box {
+  margin-top: 0;
+}
+
+/* ------------Animations------------ */
 
 @keyframes pulsate {
   100% {
