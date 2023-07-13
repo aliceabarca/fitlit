@@ -10,8 +10,6 @@ import {
   getAverageWater,
   getDailyWater,
   getWeeklyWater,
-  getUserHydrationData,
-  getUserSleepData,
   getAvgSleepPerDay,
   getAllAvgSleep,
 } from '../src/model';
