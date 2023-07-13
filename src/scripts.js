@@ -46,7 +46,8 @@ function processUserData() {
     store.hydrationData,
     store.user.id,
   );
-  showCurrentDayWaterIntake(getDailyWater(userHydrationData, getCurrentWaterDate(userHydrationData)));
+  const todaysWaterIntake = getDailyWater(userHydrationData, getCurrentWaterDate(userHydrationData));
+  showCurrentDayWaterIntake(todaysWaterIntake);
   showUserData(store.user);
   showUserStepsVsAvg(userSteps, avg);
   displayUsersName(store.user);
