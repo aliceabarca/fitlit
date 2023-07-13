@@ -49,9 +49,7 @@ export function getUserHydrationData(hydrationData, id) {
 }
 
 export function getWeeklyWater(userData) {
-  if (userData.length > 7) {
     userData = userData.slice(-7, -1);
-  }
 
   userData.sort((a, b) => new Date(b.date) - new Date(a.date));
 
