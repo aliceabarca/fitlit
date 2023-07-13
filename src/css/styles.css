@@ -5,10 +5,10 @@
 
 body,
 html {
+  height: 100%;
   background-image: url(../images/kendal-hnysCJrPpkc-unsplash.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100%;
 }
 
 main {
@@ -18,21 +18,21 @@ main {
 }
 
 div {
+  height: 100%;
+  width: 33.3%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  height: 100%;
-  width: 33.3%;
 }
 
 section {
-  background-color: rgba(217, 217, 217, 0.26);
-  border: solid #ff50a5 3px;
-  border-radius: 8px;
-  box-shadow: 0 0 15px #f09, inset 0 0 10px #fff;
   width: 90%;
   margin: 5%;
+  border: solid #ff50a5 3px;
+  border-radius: 8px;
+  background-color: rgba(217, 217, 217, 0.26);
+  box-shadow: 0 0 15px #f09, inset 0 0 10px #fff;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -64,8 +64,8 @@ h3 {
 p {
   font-family: 'Raleway', sans-serif;
   font-size: 15px;
-  color: #e9c4e0;
   margin: 15px 0px;
+  color: #e9c4e0;
 }
 
 
@@ -77,19 +77,19 @@ p {
 }
 
 .steps-circle {
-  margin-top: 15%;
   height: 250px;
   width: 250px;
+  margin-top: 15%;
   border-radius: 50%;
 }
 
 /* -------------Water--------------*/
 
 .water-box {
-  display: flex;
-  justify-content: space-evenly;
   height: 35%;
   margin-right: 0;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .todays-water {
@@ -116,22 +116,20 @@ p {
   width: 40px;
   border-radius: 50%;
   margin-top: 0;
-
   background-color: #f09;
-  
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .glass-box {
+  height: 1000px;
+  width: 90%;
+  margin-bottom: 10px;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
-  
-  height: 1000px;
-  margin-bottom: 10px;
 }
 
 .water {
@@ -147,26 +145,22 @@ p {
 /* -------------Sleep--------------*/
 
 .sleep-box {
-  margin-top: 0;
   height: 50%;
+  margin-top: 0;
   margin-right: 0;
 }
 
 /* -------------User--------------*/
 
 .user-box {
-  margin-top: 0;
   height: 85%;
+  margin-top: 0;
 }
 
 .data-box {
+  width: 85%;
   padding-left: 5%;
   padding-top: 6%;
-  width: 85%;
-}
-
-.data-box article {
-  align-items: flex-start;
 }
 
 .friends-box,
