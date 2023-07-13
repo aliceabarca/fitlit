@@ -1,11 +1,11 @@
 export function getUserData(dataType, users, id) {
   switch (dataType) {
     case 'hydrationData':
-      return data.filter(data => data.userID === id);
+      return users.filter(data => data.userID === id);
     case 'sleepData':
-      return data.filter(data => data.userID === id);
+      return users.filter(data => data.userID === id);
     default:
-      return data.find(data => data.id === id);
+      return users.find(data => data.id === id);
   }
 }
 
