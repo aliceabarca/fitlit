@@ -30,6 +30,10 @@ export function getAverageWater(userData) {
   );
 }
 
+export function getCurrentWaterDate(userData) {
+  return userData[userData.length -1].date;
+}
+
 export function getDailyWater(userHydrationData, date) {
   const userData = userHydrationData.find(data => data.date === date);
 
@@ -45,9 +49,7 @@ export function getUserHydrationData(hydrationData, id) {
 }
 
 export function getWeeklyWater(userData) {
-  if (userData.length > 7) {
     userData = userData.slice(-7, -1);
-  }
 
   userData.sort((a, b) => new Date(b.date) - new Date(a.date));
 

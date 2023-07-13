@@ -86,13 +86,12 @@ describe('hydrationData', () => {
     expect(water).to.equal(0);
   });
 
-  it('should return a object with ounces of water for the last 7 days of data', () => {
+  it('should return a object with ounces of water for the last 6 days of data', () => {
     const userData = getUserHydrationData(hydrationData, 1);
     const water = getWeeklyWater(userData);
 
     expect(water).to.be.an('object');
     expect(water).to.deep.equal({
-      '2023/03/31': 86,
       '2023/03/30': 20,
       '2023/03/29': 96,
       '2023/03/28': 38,
@@ -109,7 +108,6 @@ describe('hydrationData', () => {
     const waterDates = Object.keys(water);
 
     expect(waterDates).to.deep.equal([
-      '2023/03/31',
       '2023/03/30',
       '2023/03/29',
       '2023/03/28',
@@ -119,12 +117,19 @@ describe('hydrationData', () => {
     ]);
   });
 
-  it('should return an object holding all possible elements if there are less than 7', () => {
+  it('should return an object holding all possible elements after the current date if there are less than 7', () => {
     const userData = getUserHydrationData(hydrationData, 2);
     const water = getWeeklyWater(userData);
 
-    expect(water).to.deep.equal({ '2023/03/26': 88, '2023/03/24': 35 });
+    expect(water).to.deep.equal({'2023/03/24': 35 });
   });
+  
+  it('should return an empty object is only 1 data point exists', () => {
+    const userData = getUserHydrationData(hydrationData, 3);
+    const water = getWeeklyWater(userData);
+
+    expect(water).to.deep.equal({});
+  })
 
   it('should return an empty object if no user data exists', () => {
     const userData = getUserHydrationData(hydrationData, 3);
