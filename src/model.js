@@ -14,7 +14,7 @@ function getRandomID(array) {
 }
 
 export function getRandomUser(users) {
-  return getUserData(users, getRandomID(users));
+  return getUserData('users', users, getRandomID(users));
 }
 
 export function getAllAvgSteps(users) {
@@ -47,10 +47,6 @@ export function getDailyWater(userHydrationData, date) {
   return userData.numOunces;
 }
 
-export function getUserHydrationData(hydrationData, id) {
-  return hydrationData.filter((data) => data.userID === id);
-}
-
 export function getWeeklyWater(userData) {
   if (userData.length > 7) {
     userData = userData.slice(-7);
@@ -64,18 +60,14 @@ export function getWeeklyWater(userData) {
   }, {});
 }
 
-export function getUserSleepData(sleepData, id) {
-  return sleepData.filter((data) => data.userID === id);
-}
-
 export function getAvgSleepPerDay(userData) {
+  const avg =
+  userData.reduce((acc, userData) => (acc += userData.hoursSlept), 0) /
+  userData.length;
+  
   if (!userData.length) {
     return 0;
   }
-
-  const avg =
-    userData.reduce((acc, userData) => (acc += userData.hoursSlept), 0) /
-    userData.length;
 
   return avg;
 }
