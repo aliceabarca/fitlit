@@ -14,14 +14,13 @@ import {
   getUserSleepData,
   getAvgSleepPerDay,
   getAllAvgSleep,
-  getDailySleep
 } from '../src/model';
 
 describe('user data functions', () => {
   let userData, average, user, stepGoal;
 
   beforeEach('init data', () => {
-    userData = getUserData(sampleData.users, 1);
+    userData = getUserData('users', sampleData.users, 1);
     stepGoal = getUserStepGoal(userData);
     average = getAllAvgSteps(sampleData.users);
     user = getRandomUser(sampleData.users);
@@ -61,7 +60,7 @@ describe('hydrationData', () => {
   });
 
   it('should return a number of average all time water intake', () => {
-    const userData = getUserHydrationData(hydrationData, 1);
+    const userData = getUserData('hydrationData', hydrationData, 1);
     const water = getAverageWater(userData);
 
     expect(water).to.be.a('number');
@@ -69,14 +68,14 @@ describe('hydrationData', () => {
   });
 
   it('should return 0 if no user data is found', () => {
-    const userData = getUserHydrationData(hydrationData, 4);
+    const userData = getUserData('hydrationData', hydrationData, 4);
     const water = getAverageWater(userData);
 
     expect(water).to.equal(0);
   });
 
   it('should return a number for the amount of ounces a user has consumed on a specific day', () => {
-    const userData = getUserHydrationData(hydrationData, 1);
+    const userData = getUserData('hydrationData', hydrationData, 1);
     const water = getDailyWater(userData, '2023/03/26');
 
     expect(water).to.be.a('number');
@@ -84,14 +83,14 @@ describe('hydrationData', () => {
   });
 
   it('should return a 0 if no user data is found for that date', () => {
-    const userData = getUserHydrationData(hydrationData, 1);
+    const userData = getUserData('hydrationData', hydrationData, 1);
     const water = getDailyWater(userData, '2023/04/28');
 
     expect(water).to.equal(0);
   });
 
   it('should return a object with ounces of water for the last 7 days of data', () => {
-    const userData = getUserHydrationData(hydrationData, 1);
+    const userData = getUserData('hydrationData', hydrationData, 1);
     const water = getWeeklyWater(userData);
 
     expect(water).to.be.an('object');
@@ -107,7 +106,7 @@ describe('hydrationData', () => {
   });
 
   it('should have keys in order from least to most recent', () => {
-    const userData = getUserHydrationData(hydrationData, 1);
+    const userData = getUserData('hydrationData', hydrationData, 1);
     const water = getWeeklyWater(userData);
 
     const waterDates = Object.keys(water);
@@ -123,14 +122,14 @@ describe('hydrationData', () => {
   });
 
   it('should return an object holding all possible elements if there are less than 7', () => {
-    const userData = getUserHydrationData(hydrationData, 2);
+    const userData = getUserData('hydrationData', hydrationData, 2);
     const water = getWeeklyWater(userData);
 
     expect(water).to.deep.equal({ '2023/03/26': 88, '2023/03/24': 35 });
   });
 
   it('should return an empty object id no user data exists', () => {
-    const userData = getUserHydrationData(hydrationData, 3);
+    const userData = getUserData('hydrationData', hydrationData, 3);
     const water = getWeeklyWater(userData);
 
     expect(water).to.deep.equal({});
@@ -145,15 +144,14 @@ describe('sleepData', () => {
   });
 
   it('should return a users average sleep per day', () => {
-    const userData = getUserSleepData(sleep, 1);
+    const userData = getUserData('sleepData', sleep, 1);
     const sleeper = getAvgSleepPerDay(userData);
 
-    expect(sleeper).to.be.a('number');
     expect(sleeper).to.equal(9.6);
   });
 
   it('should return 0 if no user data is found', () => {
-    const userData = getUserSleepData(sleep, 3);
+    const userData = getUserData('sleepData', sleep, 3);
     const sleeper = getAvgSleepPerDay(userData);
 
     expect(sleeper).to.equal(0);
