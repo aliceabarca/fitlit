@@ -11,6 +11,10 @@ import {
   getDailyWater,
   getWeeklyWater,
   getUserHydrationData,
+  getUserSleepData,
+  getAvgSleepPerDay,
+  getAllAvgSleep,
+  getDailySleep
 } from '../src/model';
 
 describe('user data functions', () => {
@@ -107,7 +111,6 @@ describe('hydrationData', () => {
     const water = getWeeklyWater(userData);
 
     const waterDates = Object.keys(water);
-
     expect(waterDates).to.deep.equal([
       '2023/03/31',
       '2023/03/30',
@@ -133,3 +136,32 @@ describe('hydrationData', () => {
     expect(water).to.deep.equal({});
   });
 });
+
+describe('sleepData', () => {
+  let sleep;
+
+  beforeEach('init sleepData', () => {
+    sleep = sampleData.sleepData;
+  });
+
+  it('should return a users average sleep per day', () => {
+    const userData = getUserSleepData(sleep, 1);
+    const sleeper = getAvgSleepPerDay(userData);
+
+    expect(sleeper).to.be.a('number');
+    expect(sleeper).to.equal(9.6);
+  });
+
+  it('should return 0 if no user data is found', () => {
+    const userData = getUserSleepData(sleep, 3);
+    const sleeper = getAvgSleepPerDay(userData);
+
+    expect(sleeper).to.equal(0);
+  });
+
+  it('should return the average of all time sleep quality', () => {
+    const userData = getAllAvgSleep(sleep, 1);
+
+    expect(userData).to.equal(3.9);
+  });
+})

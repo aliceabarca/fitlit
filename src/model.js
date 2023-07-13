@@ -56,3 +56,23 @@ export function getWeeklyWater(userData) {
     return week;
   }, {});
 }
+
+export function getUserSleepData(sleepData, id) {
+  return sleepData.filter(data => data.userID === id)
+  }
+
+export function getAvgSleepPerDay(userData) {
+    const avg = userData.reduce((acc, userData) => (acc += userData.hoursSlept), 0) / userData.length
+
+    if (!userData.length) {
+      return 0;
+    } 
+
+    return avg;
+  }
+
+export function getAllAvgSleep(userData) {
+  return (
+    userData.reduce((acc, user) => (acc += user.sleepQuality), 0) / userData.length
+  );
+}

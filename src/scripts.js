@@ -6,7 +6,7 @@ import {
   showUserStepsVsAvg,
   showCurrentDayWaterIntake,
 } from './domUpdates';
-import { getRandomUser, getAllAvgSteps, getUserHydrationData } from './model';
+import { getRandomUser, getAllAvgSteps, getUserHydrationData, getUserSleepData} from './model';
 import { getApiData } from './apiCalls';
 
 const store = {
