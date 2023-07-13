@@ -125,13 +125,12 @@ p {
 }
 
 .glass-box {
-  border: 0;
-  box-shadow: none;
-  background-color: rgba(217, 217, 217, 0);
   display: flex;
   flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  
   height: 1000px;
-  margin-top: 0;
   margin-bottom: 10px;
 }
 
