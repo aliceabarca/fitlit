@@ -41,7 +41,7 @@ describe('user data functions', () => {
   it("should return a user's step goal", () => {
     expect(stepGoal).to.equal(6000);
   });
-  
+
   it('should return the average of all step goals', () => {
     expect(average).to.equal(6000);
   });
@@ -49,7 +49,6 @@ describe('user data functions', () => {
   it('should return a random user object from the array', () => {
     expect(sampleData.users).to.deep.include(user);
   });
-
 });
 
 describe('hydrationData', () => {
@@ -123,15 +122,15 @@ describe('hydrationData', () => {
     const userData = getUserData('hydrationData', hydrationData, 2);
     const water = getWeeklyWater(userData);
 
-    expect(water).to.deep.equal({'2023/03/24': 35 });
+    expect(water).to.deep.equal({ '2023/03/24': 35 });
   });
-  
+
   it('should return an empty object is only 1 data point exists', () => {
     const userData = getUserData('hydrationData', hydrationData, 3);
     const water = getWeeklyWater(userData);
 
     expect(water).to.deep.equal({});
-  })
+  });
 
   it('should return an empty object if no user data exists', () => {
     const userData = getUserData('hydrationData', hydrationData, 3);
@@ -171,7 +170,7 @@ describe('sleepData', () => {
   it('should return how many hours a user slept for a specific day', () => {
     const userData = getUserData('sleepData', sleep, 2);
     const sleeps = getDailySleep(userData, '2023/03/25');
-  
+
     expect(sleeps).to.equal(8.4);
   });
 
@@ -179,6 +178,6 @@ describe('sleepData', () => {
     const userData = getUserData('sleepData', sleep, 2);
     const sleeps = getSleepQuality(userData, '2023/03/25');
 
-    expect(sleeps).to.equal(3.5)
-  })
+    expect(sleeps).to.equal(3.5);
+  });
 });
