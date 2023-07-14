@@ -99,5 +99,52 @@ export default {
         hoursSlept: 8.4,
         sleepQuality: 3.5
       },
+      {
+        userID:3,
+        date: '2023/03/24',
+        hoursSlept: 8.3,
+        sleepQuality: 3.5
+      },
+      {
+        userID:3,
+        date: '2023/03/25',
+        hoursSlept: 8.0,
+        sleepQuality: 4.5
+      },
+      {
+        userID:3,
+        date: '2023/03/26',
+        hoursSlept: 8.1,
+        sleepQuality: 3.5
+      },
+      {
+        userID:3,
+        date: '2023/03/27',
+        hoursSlept: 7.5,
+        sleepQuality: 4.3
+      },
+      {
+        userID:3,
+        date: '2023/03/28',
+        hoursSlept: 7.5,
+        sleepQuality: 2.5
+      },
+      {
+        userID:3,
+        date: '2023/03/29',
+        hoursSlept: 7.1,
+        sleepQuality: 5.2
+      },
+      {
+        userID:3,
+        date: '2023/03/30',
+        hoursSlept: 7.5,
+        sleepQuality: 3.7
+      },
+      { userID:3,
+      date: '2023/03/31',
+      hoursSlept: 6.9,
+      sleepQuality: 3.5
+    },
     ]
 };
