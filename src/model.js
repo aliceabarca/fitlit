@@ -5,10 +5,10 @@ export function getUserData(dataType, users, id) {
     dataType === 'hydrationData' ||
     dataType === 'sleepData' ||
     dataType === 'activityData'
-  ) {
+  )  {
     return users.filter(data => data.userID === id);
   } else {
-    return users.find(data => data.id === id);
+    return users.find((data) => data.id === id);
   }
 }
 
@@ -40,7 +40,7 @@ export function getAverageWater(userData) {
   }
 
   return Math.round(
-    userData.reduce((sum, date) => sum + date.numOunces, 0) / userData.length,
+    userData.reduce((sum, date) => sum + date.numOunces, 0) / userData.length
   );
 }
 
@@ -80,14 +80,14 @@ export function getAvgSleepPerDay(userData) {
     return 0;
   }
 
-  return avg;
+  return parseFloat(avg.toFixed(1));
 }
 
-export function getAllAvgSleep(userData) {
-  return (
+export function getAllAvgSleepQuality(userData) {
+  const avg =
     userData.reduce((acc, user) => (acc += user.sleepQuality), 0) /
-    userData.length
-  );
+    userData.length;
+  return parseFloat(avg.toFixed(1));
 }
 
 export function getDailySleep(sleepData, data) {
@@ -97,13 +97,29 @@ export function getDailySleep(sleepData, data) {
 }
 
 export function getSleepQuality(sleepData, date) {
-  const userData = sleepData.find(data => data.date === date);
-
+  const userData = sleepData.find((data) => data.date === date);
   return userData.sleepQuality;
 }
 
+export function getWeeklySleep(userData, date) {
+  const startCount = userData.findIndex((entry) => entry.date === date);
+  const weeklyData = userData.slice(startCount, startCount + 7).reverse();
 
-/* Activity Data */
+  return weeklyData.reduce((acc, day) => {
+    acc[day.date] = day.hoursSlept;
+    return acc;
+  }, {});
+}
+
+export function getWeeklySleepQuality(userData) {
+  userData.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  return userData.reduce((week, day) => {
+    week[day.date] = day.hoursSlept;
+    return week;
+  }, {});
+}
+  /* Activity Data */
 
 export function getActivityDataByDate(activityData, id, date) {
   return getUserData('activityData', activityData, id).find(
@@ -129,6 +145,5 @@ export function calculateDistanceTraveled(userData, date, activityData) {
   const mile = 5280;
   activityData = getActivityDataByDate(activityData, userData.id, date);
   const distance = (userData.strideLength * activityData.numSteps) / mile;
-
   return parseFloat(distance.toFixed(2));
 }
