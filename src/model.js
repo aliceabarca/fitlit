@@ -1,8 +1,8 @@
 export function getUserData(dataType, users, id) {
-  if (dataType === 'hydrationData' || dataType === 'sleepData') {
-    return users.filter(data => data.userID === id);
+  if (dataType === "hydrationData" || dataType === "sleepData") {
+    return users.filter((data) => data.userID === id);
   } else {
-    return users.find(data => data.id === id);
+    return users.find((data) => data.id === id);
   }
 }
 
@@ -11,7 +11,7 @@ function getRandomID(array) {
 }
 
 export function getRandomUser(users) {
-  return getUserData('users', users, getRandomID(users));
+  return getUserData("users", users, getRandomID(users));
 }
 
 export function getAllAvgSteps(users) {
@@ -35,7 +35,7 @@ export function getAverageWater(userData) {
 }
 
 export function getCurrentWaterDate(userData) {
-  return userData[userData.length -1].date;
+  return userData[userData.length - 1].date;
 }
 
 export function getDailyWater(userHydrationData, date) {
@@ -49,7 +49,7 @@ export function getDailyWater(userHydrationData, date) {
 }
 
 export function getWeeklyWater(userData) {
-    userData = userData.slice(-7, -1);
+  userData = userData.slice(-7, -1);
 
   userData.sort((a, b) => new Date(b.date) - new Date(a.date));
 
@@ -61,31 +61,40 @@ export function getWeeklyWater(userData) {
 
 export function getAvgSleepPerDay(userData) {
   const avg =
-  userData.reduce((acc, userData) => (acc += userData.hoursSlept), 0) /
-  userData.length;
-  
+    userData.reduce((acc, userData) => (acc += userData.hoursSlept), 0) /
+    userData.length;
+
   if (!userData.length) {
     return 0;
   }
 
-  return avg;
+  return parseFloat(avg.toFixed(1));
 }
 
-export function getAllAvgSleep(userData) {
-  return (
+export function getAllAvgSleepQuality(userData) {
+  const avg =
     userData.reduce((acc, user) => (acc += user.sleepQuality), 0) /
-    userData.length
-  );
+    userData.length;
+  return parseFloat(avg.toFixed(1));
 }
 
 export function getDailySleep(sleepData, data) {
-  const userData = sleepData.find(date => data === date.date);
+  const userData = sleepData.find((date) => data === date.date);
 
-  return userData.hoursSlept
+  return userData.hoursSlept;
 }
 
 export function getSleepQuality(sleepData, date) {
-  const userData = sleepData.find(data => data.date === date)
-
-  return userData.sleepQuality
+  const userData = sleepData.find((data) => data.date === date);
+  return userData.sleepQuality;
 }
+
+export function getWeeklySleep(userData, date) {
+  const startCount = userData.findIndex((entry) => entry.date === date) 
+    const weeklyData = userData.slice(startCount, startCount + 7).reverse();
+
+    return weeklyData.reduce((acc, day) => {
+      acc[day.date] = day.hoursSlept 
+      return acc 
+    }, {});
+  }
