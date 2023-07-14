@@ -11,9 +11,10 @@ import {
   getDailyWater,
   getWeeklyWater,
   getAvgSleepPerDay,
-  getAllAvgSleep,
+  getAllAvgSleepQuality,
   getDailySleep,
   getSleepQuality,
+  getWeeklySleep
 } from '../src/model';
 
 describe('user data functions', () => {
@@ -156,14 +157,14 @@ describe('sleepData', () => {
   });
 
   it('should return 0 if no user data is found', () => {
-    const userData = getUserData('sleepData', sleep, 3);
+    const userData = getUserData('sleepData', sleep, 4);
     const sleeper = getAvgSleepPerDay(userData);
 
     expect(sleeper).to.equal(0);
   });
 
   it('should return the average of all time sleep quality', () => {
-    const userData = getAllAvgSleep(sleep, 1);
+    const userData = getAllAvgSleepQuality(sleep, 1);
 
     expect(userData).to.equal(3.9);
   });
@@ -179,6 +180,51 @@ describe('sleepData', () => {
     const userData = getUserData('sleepData', sleep, 2);
     const sleeps = getSleepQuality(userData, '2023/03/25');
 
-    expect(sleeps).to.equal(3.5)
-  })
+    expect(sleeps).to.equal(3.5);
+  });
+
+  it('should return an object of how many hours a user slept each day over 7 days', () => {
+    const userData = getUserData('sleepData', sleep, 3);
+    const slept = getWeeklySleep(userData, '2023/03/24');
+
+    expect(slept).to.be.an('object');
+    expect(slept).to.deep.equal({
+      '2023/03/24': 8.3,
+      '2023/03/25': 8.0,
+      '2023/03/26': 8.1,
+      '2023/03/27': 7.5,
+      '2023/03/28': 7.5,
+      '2023/03/29': 7.1,
+      '2023/03/30': 7.5,
+    })
+  });
+  it('should have keys in order from least to most recent', () => {
+    const userData = getUserData('sleepData', sleep, 3);
+    const weeklySleep = getWeeklySleep(userData, '2023/03/24');
+
+    const sleepDates = Object.keys(weeklySleep);
+    expect(sleepDates).to.deep.equal([
+      '2023/03/30',
+      '2023/03/29',
+      '2023/03/28',
+      '2023/03/27',
+      '2023/03/26',
+      '2023/03/25',
+      '2023/03/24',
+    ]);
+  });
+  
+  it('should return an empty object is only 1 data point exists', () => {
+    const userData = getUserData('sleepData', sleep, 3);
+    const water = getWeeklySleep(userData);
+
+    expect(water).to.deep.equal({});
+  });
+  
+  it('should return an empty object if no user data exists', () => {
+    const userData = getUserData('sleepData', sleep, 3);
+    const water = getWeeklySleep(userData);
+
+    expect(water).to.deep.equal({});
+  });
 });
