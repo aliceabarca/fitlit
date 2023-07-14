@@ -1,6 +1,12 @@
+/* User Data */
+
 export function getUserData(dataType, users, id) {
-  if (dataType === 'hydrationData' || dataType === 'sleepData') {
-    return users.filter((data) => data.userID === id);
+  if (
+    dataType === 'hydrationData' ||
+    dataType === 'sleepData' ||
+    dataType === 'activityData'
+  )  {
+    return users.filter(data => data.userID === id);
   } else {
     return users.find((data) => data.id === id);
   }
@@ -14,6 +20,8 @@ export function getRandomUser(users) {
   return getUserData('users', users, getRandomID(users));
 }
 
+/* Step Data */
+
 export function getAllAvgSteps(users) {
   return (
     users.reduce((acc, user) => (acc += user.dailyStepGoal), 0) / users.length
@@ -23,6 +31,8 @@ export function getAllAvgSteps(users) {
 export function getUserStepGoal(user) {
   return user.dailyStepGoal;
 }
+
+/* Water Data */
 
 export function getAverageWater(userData) {
   if (!userData.length) {
@@ -58,6 +68,8 @@ export function getWeeklyWater(userData) {
     return week;
   }, {});
 }
+
+/* Sleep Data */
 
 export function getAvgSleepPerDay(userData) {
   const avg =
@@ -106,4 +118,19 @@ export function getWeeklySleepQuality(userData) {
     week[day.date] = day.hoursSlept;
     return week;
   }, {});
+  /* Activity Data */
+
+export function getActivityDataByDate(activityData, id, date) {
+  return getUserData('activityData', activityData, id).find(
+    data => data.date === date,
+  );
+}
+
+// Accepts a single user's data as userData param
+// Accepts all activity data
+export function calculateDistanceTraveled(userData, date, activityData) {
+  const mile = 5280;
+  activityData = getActivityDataByDate(activityData, userData.id, date);
+  const distance = (userData.strideLength * activityData.numSteps) / mile;
+  return parseFloat(distance.toFixed(2));
 }
