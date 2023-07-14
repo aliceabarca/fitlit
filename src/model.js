@@ -1,5 +1,5 @@
 export function getUserData(dataType, users, id) {
-  if (dataType === "hydrationData" || dataType === "sleepData") {
+  if (dataType === 'hydrationData' || dataType === 'sleepData') {
     return users.filter((data) => data.userID === id);
   } else {
     return users.find((data) => data.id === id);
@@ -11,7 +11,7 @@ function getRandomID(array) {
 }
 
 export function getRandomUser(users) {
-  return getUserData("users", users, getRandomID(users));
+  return getUserData('users', users, getRandomID(users));
 }
 
 export function getAllAvgSteps(users) {
