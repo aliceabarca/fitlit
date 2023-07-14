@@ -111,6 +111,7 @@ export function getActivityDataByDate(activityData, id, date) {
 }
 
 // Accepts a single user's data as userData param
+// Accepts all activity data
 export function calculateDistanceTraveled(userData, date, activityData) {
   const mile = 5280;
   activityData = getActivityDataByDate(activityData, userData.id, date);
