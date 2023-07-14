@@ -260,14 +260,14 @@ export default {
     {
       userID: 2,
       date: '2023/03/25',
-      numSteps: 14719,
+      numSteps: 9000,
       minutesActive: 201,
       flightsOfStairs: 39,
     },
     {
       userID: 3,
       date: '2023/03/25',
-      numSteps: 12255,
+      numSteps: 2500,
       minutesActive: 245,
       flightsOfStairs: 46,
     },

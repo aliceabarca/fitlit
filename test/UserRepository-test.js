@@ -14,11 +14,13 @@ import {
   getAllAvgSleepQuality,
   getDailySleep,
   getSleepQuality,
+  compareStepsWithGoal,
+  getActivityDataByDate,
+  calculateDistanceTraveled, 
   getWeeklySleep,
   getWeeklySleepQuality,
-  getActivityDataByDate,
-  calculateDistanceTraveled,
-} from "../src/model";
+  getMinutesActive,
+} from '../src/model';
 
 describe("user data functions", () => {
   let userData, average, user, stepGoal;
@@ -184,7 +186,6 @@ describe("sleepData", () => {
 
     expect(sleeps).to.equal(3.5);
   });
-
   it("should return an object of how many hours a user slept each day over 7 days", () => {
     const userData = getUserData("sleepData", sleep, 3);
     const slept = getWeeklySleep(userData, "2023/03/24");
@@ -246,28 +247,59 @@ describe("sleepData", () => {
     });
   })
 
-  describe('activityData', () => {
-    let userData, activityData;
+describe('activityData', () => {
+  let userData, activityData;
 
-    beforeEach('init data', () => {
-      userData = getUserData('userData', sampleData.users, 1);
-      activityData = getActivityDataByDate(sampleData.activity, 1, '2023/03/25');
-      
-    })
-    
-    it("should return a user's activity data by date", () => {
-      expect(activityData).to.deep.equal({
-        userID: 1,
-        date: '2023/03/25',
-        numSteps: 14264,
-        minutesActive: 111,
-        flightsOfStairs: 1,
-      });
-    });
-    
-    it('should calculate distance traveled', () => {
-      const distanceTraveled = calculateDistanceTraveled(userData, '2023/03/25', sampleData.activity);
-      expect(distanceTraveled).to.equal(10.81)
-    })
+  beforeEach('init data', () => {
+    userData = getUserData('userData', sampleData.users, 1);
+    activityData = getActivityDataByDate(sampleData.activity, 1, '2023/03/25');
   });
+
+  it("should return a user's activity data by date", () => {
+    expect(activityData).to.deep.equal({
+      userID: 1,
+      date: '2023/03/25',
+      numSteps: 14264,
+      minutesActive: 111,
+      flightsOfStairs: 1,
+    });
+  });
+
+  it('should calculate distance traveled', () => {
+    const distanceTraveled = calculateDistanceTraveled(userData, '2023/03/25', sampleData.activity);
+    expect(distanceTraveled).to.equal(10.81)
+  });
+  
+  it('should return the minutes a user was active on a specific date', () => {
+    const minutes = getMinutesActive(activityData)
+    
+    expect(minutes).to.equal(111);
+  })
+
+  it('should return a boolean true if the user has just met their goal', () => {
+    userData = getUserData('userData', sampleData.users, 2);
+    activityData = getActivityDataByDate(sampleData.activity, 2, '2023/03/25');
+
+    const hasReachedGoal = compareStepsWithGoal(userData, activityData);
+    
+    expect(hasReachedGoal).to.equal(true);
+  })
+
+  it('should return a boolean true if the user has passed their goal', () => {
+    userData = getUserData('userData', sampleData.users, 2);
+    activityData = getActivityDataByDate(sampleData.activity, 2, '2023/03/25');
+
+
+    const hasReachedGoal = compareStepsWithGoal(userData, activityData);
+    
+    expect(hasReachedGoal).to.equal(true);
+  })
+
+  it('should return a boolean false if the user has not passed their goal', () => {
+    userData = getUserData('userData', sampleData.users, 3);
+    activityData = getActivityDataByDate(sampleData.activity, 3, '2023/03/25');
+    const hasReachedGoal = compareStepsWithGoal(userData, activityData);
+    
+    expect(hasReachedGoal).to.equal(false);
+  })
 });

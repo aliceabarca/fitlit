@@ -123,8 +123,20 @@ export function getWeeklySleepQuality(userData) {
 
 export function getActivityDataByDate(activityData, id, date) {
   return getUserData('activityData', activityData, id).find(
-    data => data.date === date,
+    (data) => data.date === date,
   );
+}
+
+export function getMinutesActive(activityData) {
+  return activityData.minutesActive;
+}
+
+export function compareStepsWithGoal(userData, activityData) {
+  if (userData.dailyStepGoal <= activityData.numSteps) {
+    return true;
+  }
+
+  return false;
 }
 
 // Accepts a single user's data as userData param
