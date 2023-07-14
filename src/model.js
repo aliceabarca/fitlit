@@ -98,3 +98,12 @@ export function getWeeklySleep(userData, date) {
     return acc;
   }, {});
 }
+
+export function getWeeklySleepQuality(userData) {
+  userData.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  return userData.reduce((week, day) => {
+    week[day.date] = day.hoursSlept;
+    return week;
+  }, {});
+}
