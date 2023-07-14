@@ -15,7 +15,7 @@ import {
   getDailySleep,
   getSleepQuality,
   getWeeklySleep,
-  getWeeklySleepQuality
+  getWeeklySleepQuality,
   getActivityDataByDate,
   calculateDistanceTraveled,
 } from "../src/model";

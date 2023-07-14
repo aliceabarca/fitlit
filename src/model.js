@@ -118,6 +118,7 @@ export function getWeeklySleepQuality(userData) {
     week[day.date] = day.hoursSlept;
     return week;
   }, {});
+}
   /* Activity Data */
 
 export function getActivityDataByDate(activityData, id, date) {
