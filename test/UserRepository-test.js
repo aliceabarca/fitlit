@@ -14,6 +14,7 @@ import {
   getAllAvgSleep,
   getDailySleep,
   getSleepQuality,
+  getActivityDataByDate,
 } from '../src/model';
 
 describe('user data functions', () => {
@@ -179,5 +180,18 @@ describe('sleepData', () => {
     const sleeps = getSleepQuality(userData, '2023/03/25');
 
     expect(sleeps).to.equal(3.5);
+  });
+
+  describe('activityData', () => {
+    it("should return a user's activity data by date", () => {
+      const data = getActivityDataByDate(sampleData.activity, 1, '2023/03/25');
+      expect(data).to.deep.equal({
+        userID: 1,
+        date: '2023/03/25',
+        numSteps: 14264,
+        minutesActive: 111,
+        flightsOfStairs: 1,
+      });
+    });
   });
 });
