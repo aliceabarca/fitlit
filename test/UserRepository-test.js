@@ -12,6 +12,8 @@ import {
   getWeeklyWater,
   getAvgSleepPerDay,
   getAllAvgSleep,
+  getDailySleep,
+  getSleepQuality,
 } from '../src/model';
 
 describe('user data functions', () => {
@@ -165,4 +167,18 @@ describe('sleepData', () => {
 
     expect(userData).to.equal(3.9);
   });
-})
+
+  it('should return how many hours a user slept for a specific day', () => {
+    const userData = getUserData('sleepData', sleep, 2);
+    const sleeps = getDailySleep(userData, '2023/03/25');
+  
+    expect(sleeps).to.equal(8.4);
+  });
+
+  it('should return a users sleep quality for a specific day', () => {
+    const userData = getUserData('sleepData', sleep, 2);
+    const sleeps = getSleepQuality(userData, '2023/03/25');
+
+    expect(sleeps).to.equal(3.5)
+  })
+});
