@@ -186,6 +186,7 @@ describe("sleepData", () => {
 
     expect(sleeps).to.equal(3.5);
   });
+
   it("should return an object of how many hours a user slept each day over 7 days", () => {
     const userData = getUserData("sleepData", sleep, 3);
     const slept = getWeeklySleep(userData, "2023/03/24");
@@ -201,6 +202,7 @@ describe("sleepData", () => {
       "2023/03/30": 7.5,
     });
   });
+
   it("should have keys in order from least to most recent", () => {
     const userData = getUserData("sleepData", sleep, 3);
     const weeklySleep = getWeeklySleep(userData, "2023/03/24");
@@ -246,6 +248,7 @@ describe("sleepData", () => {
       '2023/03/31': 8.3
     });
   })
+})
 
 describe('activityData', () => {
   let userData, activityData;
