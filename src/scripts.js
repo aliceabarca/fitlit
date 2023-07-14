@@ -7,7 +7,7 @@ import {
   showUserStepsVsAvg,
   showCurrentDayWaterIntake,
 } from './domUpdates';
-import { getRandomUser, getAllAvgSteps, getUserHydrationData, getDailyWater, getCurrentWaterDate } from './model';
+import { getRandomUser, getAllAvgSteps, getDailyWater, getUserData, getCurrentWaterDate} from './model';
 import { getApiData } from './apiCalls';
 
 const store = {
@@ -42,10 +42,7 @@ function processUserData() {
   store.user = getRandomUser(store.userData);
   const userSteps = store.user.dailyStepGoal;
   const avg = getAllAvgSteps(store.userData);
-  const userHydrationData = getUserHydrationData(
-    store.hydrationData,
-    store.user.id,
-  );
+  const userHydrationData = getUserData('hydrationData', store.hydrationData, store.user.id);
   const todaysWaterIntake = getDailyWater(userHydrationData, getCurrentWaterDate(userHydrationData));
   showCurrentDayWaterIntake(todaysWaterIntake);
   showUserData(store.user);
