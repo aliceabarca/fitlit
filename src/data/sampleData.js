@@ -83,21 +83,134 @@ export default {
       userID: 3,
       date: '2023/03/31',
       numOunces: 86,
-    }
+    },
   ],
-  sleepData:
-    [
-      {
-        userID:1,
-        date: '2023/03/24',
-        hoursSlept: 9.6,
-        sleepQuality:4.3
-      },
-      {
-        userID:2,
-        date: '2023/03/25',
-        hoursSlept: 8.4,
-        sleepQuality: 3.5
-      },
-    ]
+  sleepData: [
+    {
+      userID: 1,
+      date: '2023/03/24',
+      hoursSlept: 9.6,
+      sleepQuality: 4.3,
+    },
+    {
+      userID: 2,
+      date: '2023/03/25',
+      hoursSlept: 8.4,
+      sleepQuality: 3.5,
+    },
+  ],
+  activity: [
+    {
+      userID: 1,
+      date: '2023/03/24',
+      numSteps: 7362,
+      minutesActive: 261,
+      flightsOfStairs: 26,
+    },
+    {
+      userID: 2,
+      date: '2023/03/24',
+      numSteps: 3049,
+      minutesActive: 125,
+      flightsOfStairs: 43,
+    },
+    {
+      userID: 3,
+      date: '2023/03/24',
+      numSteps: 12970,
+      minutesActive: 282,
+      flightsOfStairs: 38,
+    },
+    {
+      userID: 4,
+      date: '2023/03/24',
+      numSteps: 8934,
+      minutesActive: 294,
+      flightsOfStairs: 19,
+    },
+    {
+      userID: 5,
+      date: '2023/03/24',
+      numSteps: 8443,
+      minutesActive: 136,
+      flightsOfStairs: 43,
+    },
+    {
+      userID: 6,
+      date: '2023/03/24',
+      numSteps: 13297,
+      minutesActive: 116,
+      flightsOfStairs: 13,
+    },
+    {
+      userID: 7,
+      date: '2023/03/24',
+      numSteps: 7765,
+      minutesActive: 74,
+      flightsOfStairs: 31,
+    },
+    {
+      userID: 8,
+      date: '2023/03/24',
+      numSteps: 7255,
+      minutesActive: 42,
+      flightsOfStairs: 28,
+    },
+    {
+      userID: 1,
+      date: '2023/03/25',
+      numSteps: 14264,
+      minutesActive: 111,
+      flightsOfStairs: 1,
+    },
+    {
+      userID: 2,
+      date: '2023/03/25',
+      numSteps: 14719,
+      minutesActive: 201,
+      flightsOfStairs: 39,
+    },
+    {
+      userID: 3,
+      date: '2023/03/25',
+      numSteps: 12255,
+      minutesActive: 245,
+      flightsOfStairs: 46,
+    },
+    {
+      userID: 4,
+      date: '2023/03/25',
+      numSteps: 4419,
+      minutesActive: 49,
+      flightsOfStairs: 18,
+    },
+    {
+      userID: 5,
+      date: '2023/03/25',
+      numSteps: 11241,
+      minutesActive: 280,
+      flightsOfStairs: 18,
+    },
+    {
+      userID: 6,
+      date: '2023/03/25',
+      numSteps: 2727,
+      minutesActive: 182,
+      flightsOfStairs: 25,
+    },
+    {
+      userID: 7,
+      date: '2023/03/25',
+      numSteps: 6209,
+      minutesActive: 178,
+      flightsOfStairs: 46,
+    },
+    {
+      userID: 8,
+      date: '2023/03/25',
+      numSteps: 7849,
+      minutesActive: 152,
+      flightsOfStairs: 12,
+    },
+  ],
 };

@@ -13,6 +13,8 @@ import {
   getDailyWater,
   getUserData,
   getCurrentWaterDate,
+  calculateDistanceTraveled,
+  getActivityDataByDate,
 } from './model';
 import { getApiData } from './apiCalls';
 
@@ -66,12 +68,13 @@ function initializeApp() {
 function processUserData() {
   const userData = store.getKey('userData');
   store.setKey('user', getRandomUser(userData));
-  const userSteps = store.getKey('user').dailyStepGoal;
+  const user = store.getKey('user');
+  const userSteps = user.dailyStepGoal;
   const avg = getAllAvgSteps(userData);
   const userHydrationData = getUserData(
     'hydrationData',
     store.getKey('hydrationData'),
-    store.getKey('user').id,
+    user.id,
   );
   showCurrentDayWaterIntake(getDailyWater(userHydrationData, '2023/03/31'));
   showUserData(store.getKey('user'));
