@@ -15,6 +15,7 @@ import {
   getDailySleep,
   getSleepQuality,
   getActivityDataByDate,
+  calculateDistanceTraveled,
 } from '../src/model';
 
 describe('user data functions', () => {
@@ -183,9 +184,16 @@ describe('sleepData', () => {
   });
 
   describe('activityData', () => {
+    let userData, activityData;
+
+    beforeEach('init data', () => {
+      userData = getUserData('userData', sampleData.users, 1);
+      activityData = getActivityDataByDate(sampleData.activity, 1, '2023/03/25');
+      
+    })
+    
     it("should return a user's activity data by date", () => {
-      const data = getActivityDataByDate(sampleData.activity, 1, '2023/03/25');
-      expect(data).to.deep.equal({
+      expect(activityData).to.deep.equal({
         userID: 1,
         date: '2023/03/25',
         numSteps: 14264,
@@ -193,5 +201,10 @@ describe('sleepData', () => {
         flightsOfStairs: 1,
       });
     });
+    
+    it('should calculate distance traveled', () => {
+      const distanceTraveled = calculateDistanceTraveled(userData, '2023/03/25', sampleData.activity);
+      expect(distanceTraveled).to.equal(10.81)
+    })
   });
 });
