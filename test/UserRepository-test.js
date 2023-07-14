@@ -15,6 +15,7 @@ import {
   getDailySleep,
   getSleepQuality,
   getWeeklySleep,
+  getWeeklySleepQuality
 } from "../src/model";
 
 describe("user data functions", () => {
@@ -156,16 +157,16 @@ describe("sleepData", () => {
   });
 
   it("should return 0 if no user data is found", () => {
-    const userData = getUserData("sleepData", sleep, 4);
+    const userData = getUserData("sleepData", sleep, 5);
     const sleeper = getAvgSleepPerDay(userData);
 
     expect(sleeper).to.equal(0);
   });
 
   it("should return the average of all time sleep quality", () => {
-    const userData = getAllAvgSleepQuality(sleep, 1);
+    const userData = getAllAvgSleepQuality(sleep, 4);
 
-    expect(userData).to.equal(3.8);
+    expect(userData).to.equal(3.6);
   });
 
   it("should return how many hours a user slept for a specific day", () => {
@@ -226,4 +227,20 @@ describe("sleepData", () => {
 
     expect(water).to.deep.equal({});
   });
+
+  it('should return how many hours a user slept each day over the course of a given week', () => {
+    const userData = getUserData('sleepData', sleep, 4);
+    const sleeps = getWeeklySleepQuality(userData);
+
+    expect(sleeps).to.deep.equal({
+      '2023/03/24': 9.6,
+      '2023/03/25': 6.3,
+      '2023/03/26': 5.4,
+      '2023/03/27': 7.1,
+      '2023/03/28': 6,
+      '2023/03/29': 5.6,
+      '2023/03/30': 6.2,
+      '2023/03/31': 8.3
+    });
+  })
 });
