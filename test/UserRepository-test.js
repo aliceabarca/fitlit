@@ -125,7 +125,7 @@ describe('hydrationData', () => {
   });
   
   it('should return an empty object is only 1 data point exists', () => {
-    const userData = getUserHydrationData(hydrationData, 3);
+    const userData = getUserData('hydrationData', hydrationData, 3);
     const water = getWeeklyWater(userData);
 
     expect(water).to.deep.equal({});
