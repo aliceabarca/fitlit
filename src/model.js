@@ -77,3 +77,15 @@ export function getAllAvgSleep(userData) {
     userData.length
   );
 }
+
+export function getDailySleep(sleepData, data) {
+  const userData = sleepData.find(date => data === date.date);
+
+  return userData.hoursSlept
+}
+
+export function getSleepQuality(sleepData, date) {
+  const userData = sleepData.find(data => data.date === date)
+
+  return userData.sleepQuality
+}
