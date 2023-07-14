@@ -30,7 +30,7 @@ export function getAverageWater(userData) {
   }
 
   return Math.round(
-    userData.reduce((sum, date) => sum + date.numOunces, 0) / userData.length
+    userData.reduce((sum, date) => sum + date.numOunces, 0) / userData.length,
   );
 }
 
@@ -39,7 +39,7 @@ export function getCurrentWaterDate(userData) {
 }
 
 export function getDailyWater(userHydrationData, date) {
-  const userData = userHydrationData.find((data) => data.date === date);
+  const userData = userHydrationData.find(data => data.date === date);
 
   if (!userData) {
     return 0;
