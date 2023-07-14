@@ -30,7 +30,7 @@ export function getAverageWater(userData) {
   }
 
   return Math.round(
-    userData.reduce((sum, date) => sum + date.numOunces, 0) / userData.length,
+    userData.reduce((sum, date) => sum + date.numOunces, 0) / userData.length
   );
 }
 
@@ -39,7 +39,7 @@ export function getCurrentWaterDate(userData) {
 }
 
 export function getDailyWater(userHydrationData, date) {
-  const userData = userHydrationData.find(data => data.date === date);
+  const userData = userHydrationData.find((data) => data.date === date);
 
   if (!userData) {
     return 0;
@@ -90,11 +90,11 @@ export function getSleepQuality(sleepData, date) {
 }
 
 export function getWeeklySleep(userData, date) {
-  const startCount = userData.findIndex((entry) => entry.date === date) 
-    const weeklyData = userData.slice(startCount, startCount + 7).reverse();
+  const startCount = userData.findIndex((entry) => entry.date === date);
+  const weeklyData = userData.slice(startCount, startCount + 7).reverse();
 
-    return weeklyData.reduce((acc, day) => {
-      acc[day.date] = day.hoursSlept 
-      return acc 
-    }, {});
-  }
+  return weeklyData.reduce((acc, day) => {
+    acc[day.date] = day.hoursSlept;
+    return acc;
+  }, {});
+}
