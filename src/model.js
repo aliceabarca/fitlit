@@ -8,7 +8,7 @@ export function getUserData(dataType, users, id) {
   ) {
     return users.filter(data => data.userID === id);
   } else {
-    return users.find((data) => data.id === id);
+    return users.find(data => data.id === id);
   }
 }
 
@@ -116,7 +116,7 @@ export function getMinutesActive(activityData) {
 }
 
 export function compareStepsWithGoal(userData, activityData) {
-  if (userData.dailyStepGoal >= activityData.numSteps) {
+  if (userData.dailyStepGoal <= activityData.numSteps) {
     return true;
   }
 

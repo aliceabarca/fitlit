@@ -17,6 +17,7 @@ import {
   compareStepsWithGoal,
   getActivityDataByDate,
   calculateDistanceTraveled,
+  getMinutesActive,
 } from '../src/model';
 
 describe('user data functions', () => {
@@ -183,54 +184,18 @@ describe('sleepData', () => {
 
     expect(sleeps).to.equal(3.5);
   });
-
-  describe('activityData', () => {
-    let userData, activityData;
-
-    beforeEach('init data', () => {
-      userData = getUserData('userData', sampleData.users, 1);
-      activityData = getActivityDataByDate(sampleData.activity, 1, '2023/03/25');
-      
-    })
-    
-    it("should return a user's activity data by date", () => {
-      expect(activityData).to.deep.equal({
-        userID: 1,
-        date: '2023/03/25',
-        numSteps: 14264,
-        minutesActive: 111,
-        flightsOfStairs: 1,
-      });
-    });
-    
-    it('should calculate distance traveled', () => {
-      const distanceTraveled = calculateDistanceTraveled(userData, '2023/03/25', sampleData.activity);
-      expect(distanceTraveled).to.equal(10.81)
-    })
-  });
 });
 
 describe('activityData', () => {
-  let userData, activityData, distanceTraveled;
+  let userData, activityData;
 
   beforeEach('init data', () => {
     userData = getUserData('userData', sampleData.users, 1);
     activityData = getActivityDataByDate(sampleData.activity, 1, '2023/03/25');
-    distanceTraveled = calculateDistanceTraveled(userData, '2023/03/25', activityData);
-  })
-
-  it("should return a user's activity data by date", () => {
-    expect(data).to.deep.equal({
-      userID: 1,
-      date: '2023/03/25',
-      numSteps: 14264,
-      minutesActive: 111,
-      flightsOfStairs: 1,
-    });
   });
 
   it("should return a user's activity data by date", () => {
-    expect(data).to.deep.equal({
+    expect(activityData).to.deep.equal({
       userID: 1,
       date: '2023/03/25',
       numSteps: 14264,
@@ -240,38 +205,14 @@ describe('activityData', () => {
   });
 
   it('should calculate distance traveled', () => {
-    expect(distanceTraveled).to.equal()
-  })
-});
-
-
-describe('activityData', () => {
-  let userData, activityData, distanceTraveled;
-
-  beforeEach('init data', () => {
-    userData = getUserData('userData', sampleData.users, 1);
-    activityData = getActivityDataByDate(sampleData.activity, 1, '2023/03/25');
-    distanceTraveled = calculateDistanceTraveled(userData, '2023/03/25', activityData);
+    const distanceTraveled = calculateDistanceTraveled(userData, '2023/03/25', sampleData.activity);
+    expect(distanceTraveled).to.equal(10.81)
   });
-
-  it("should return a user's activity data by date", () => {
-    expect(data).to.deep.equal({
-      userID: 1,
-      date: '2023/03/25',
-      numSteps: 14264,
-      minutesActive: 111,
-      flightsOfStairs: 1,
-    });
-  });
-
-  it('should calculate distance traveled', () => {
-    expect(distanceTraveled).to.equal()
-  })
-
+  
   it('should return the minutes a user was active on a specific date', () => {
     const minutes = getMinutesActive(activityData)
     
-    expect(minutes).to.equal(261);
+    expect(minutes).to.equal(111);
   })
 
   it('should return a boolean true if the user has just met their goal', () => {
@@ -294,6 +235,8 @@ describe('activityData', () => {
   })
 
   it('should return a boolean false if the user has not passed their goal', () => {
+    userData = getUserData('userData', sampleData.users, 3);
+    activityData = getActivityDataByDate(sampleData.activity, 3, '2023/03/25');
     const hasReachedGoal = compareStepsWithGoal(userData, activityData);
     
     expect(hasReachedGoal).to.equal(false);
