@@ -9,12 +9,12 @@ import {
 } from './domUpdates';
 import {
   getRandomUser,
-  getAllAvgSteps,
-  getDailyWater,
   getUserData,
+  getTodays,
   calculateDistanceTraveled,
   getActivityDataByDate,
   getCurrentDate,
+  getAllTimeAverage,
 } from './model';
 import { getApiData } from './apiCalls';
 
@@ -70,21 +70,21 @@ function processUserData() {
   store.setKey('user', getRandomUser(userData));
   const user = store.getKey('user');
   const userSteps = user.dailyStepGoal;
-  const avg = getAllAvgSteps(userData);
+  const avg = getAllTimeAverage('dailyStepGoal', userData);
   const userHydrationData = getUserData(
     'hydrationData',
     store.getKey('hydrationData'),
     user.id,
   );
-  const sleep = getUserData(
+  const userSleepData = getUserData(
     'sleepData',
     store.getKey('sleepData'),
     user.id
   )
-  showCurrentDayWaterIntake(getDailyWater(userHydrationData, '2023/03/31'));
+  showCurrentDayWaterIntake(getTodays('numOunces', userHydrationData, getCurrentDate(userHydrationData)));
   showUserData(store.getKey('user'));
   showUserStepsVsAvg(userSteps, avg);
   displayUsersName(store.getKey('user'));
   showWeeklyWaterIntake(userHydrationData);
-  showWeeklySleepData(sleep)
+  showWeeklySleepData(userSleepData);
 }

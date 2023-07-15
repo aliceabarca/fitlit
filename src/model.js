@@ -38,6 +38,16 @@ export function getAllTimeAverage(key, userData) {
   }
 }
 
+export function getTodays(key, userData, date) {
+  userData = userData.find((data) => data.date === date);
+
+  if (!userData) {
+    return 0;
+  }
+
+  return userData[key];
+}
+
 /* Step Data */
 
 export function getUserStepGoal(user) {
@@ -45,17 +55,6 @@ export function getUserStepGoal(user) {
 }
 
 /* Water Data */
-
-
-export function getDailyWater(userHydrationData, date) {
-  const userData = userHydrationData.find((data) => data.date === date);
-
-  if (!userData) {
-    return 0;
-  }
-
-  return userData.numOunces;
-}
 
 export function getWeeklyWater(userData) {
   userData = userData.slice(-7, -1);
@@ -69,17 +68,6 @@ export function getWeeklyWater(userData) {
 }
 
 /* Sleep Data */
-
-export function getDailySleep(sleepData, data) {
-  const userData = sleepData.find((date) => data === date.date);
-
-  return userData.hoursSlept;
-}
-
-export function getSleepQuality(sleepData, date) {
-  const userData = sleepData.find((data) => data.date === date);
-  return userData.sleepQuality;
-}
 
 export function getWeeklySleep(userData, date) {
   let weeklyData;

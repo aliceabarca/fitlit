@@ -7,16 +7,14 @@ import {
   getRandomUser,
   getUserStepGoal,
   getAllTimeAverage,
-  getDailyWater,
   getWeeklyWater,
-  getDailySleep,
-  getSleepQuality,
   compareStepsWithGoal,
   getActivityDataByDate,
   calculateDistanceTraveled, 
   getWeeklySleep,
   getWeeklySleepQuality,
   getMinutesActive,
+  getTodays
 } from '../src/model';
 
 describe("user data functions", () => {
@@ -78,7 +76,7 @@ describe("hydrationData", () => {
 
   it("should return a number for the amount of ounces a user has consumed on a specific day", () => {
     const userData = getUserData("hydrationData", hydrationData, 1);
-    const water = getDailyWater(userData, "2023/03/26");
+    const water = getTodays('numOunces', userData, "2023/03/26");
 
     expect(water).to.be.a("number");
     expect(water).to.equal(21);
@@ -86,7 +84,7 @@ describe("hydrationData", () => {
 
   it("should return a 0 if no user data is found for that date", () => {
     const userData = getUserData("hydrationData", hydrationData, 1);
-    const water = getDailyWater(userData, "2023/04/28");
+    const water = getTodays('numOunces',userData, "2023/04/28");
 
     expect(water).to.equal(0);
   });
@@ -172,14 +170,14 @@ describe("sleepData", () => {
 
   it("should return how many hours a user slept for a specific day", () => {
     const userData = getUserData("sleepData", sleep, 2);
-    const sleeps = getDailySleep(userData, "2023/03/25");
+    const sleeps = getTodays('hoursSlept', userData, "2023/03/25");
 
     expect(sleeps).to.equal(8.4);
   });
 
   it("should return a users sleep quality for a specific day", () => {
     const userData = getUserData("sleepData", sleep, 2);
-    const sleeps = getSleepQuality(userData, "2023/03/25");
+    const sleeps = getTodays('sleepQuality', userData, "2023/03/25");
 
     expect(sleeps).to.equal(3.5);
   });
