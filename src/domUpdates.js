@@ -1,13 +1,13 @@
 
-import { getWeeklyWater } from "./model";
+import { getWeeklyWater, getWeeklySleep, getCurrentDate } from "./model";
 const userInfo = document.querySelector('.data-box');
 const userStepsEl = document.querySelector('.user-steps .steps');
 const avgStepsEl = document.querySelector('.avg-steps .steps');
 const waterIntake = document.querySelector('.water-intake')
 const usersName = document.querySelector('h2');
 const weeklyWaterIntake = document.querySelector('.weekly-water-box');
-const glassBox = document.querySelector('.glass-box')
-
+const glassBox = document.querySelector('.glass-box');
+const weeklySleepBox = document.querySelector('.weekly-sleep-data-box');
 
 export function displayUsersName(user) {
   const firstName = user.name.split(' ')[0]
@@ -61,4 +61,15 @@ export function showWeeklyWaterIntake(userHydrationData) {
                                     <p class="weekly-ounces">${weeklyWater[day]}</p>
                                     </article>`
   }) 
+}
+
+export function showWeeklySleepData(sleep) {
+  const weeklySleep = getWeeklySleep(sleep, getCurrentDate(sleep));
+  const sleeps = Object.keys(weeklySleep);
+  sleeps.forEach(day => {
+    weeklySleepBox.innerHTML += `<article class="week-day" >
+    <p class="date" >${day.slice(5)}</p>
+    <p class="weekly-ounces">${weeklySleep[day]}</p>
+    </article>`
+  });
 }
