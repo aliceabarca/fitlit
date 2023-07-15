@@ -1,4 +1,4 @@
-
+import { WeeklyStepsVsGoal } from "./charts";
 import { getWeeklyWater } from "./model";
 const userInfo = document.querySelector('.data-box');
 const userStepsEl = document.querySelector('.user-steps .steps');
@@ -61,4 +61,8 @@ export function showWeeklyWaterIntake(userHydrationData) {
                                     <p class="weekly-ounces">${weeklyWater[day]}</p>
                                     </article>`
   }) 
+}
+
+export function displayWeeklyStepData(weekData, goal) {
+  WeeklyStepsVsGoal(weekData, goal)
 }
