@@ -5,13 +5,10 @@ import sampleData from "../src/data/sampleData";
 import {
   getUserData,
   getRandomUser,
-  getAllAvgSteps,
   getUserStepGoal,
-  getAverageWater,
+  getAllTimeAverage,
   getDailyWater,
   getWeeklyWater,
-  getAvgSleepPerDay,
-  getAllAvgSleepQuality,
   getDailySleep,
   getSleepQuality,
   compareStepsWithGoal,
@@ -28,7 +25,7 @@ describe("user data functions", () => {
   beforeEach("init data", () => {
     userData = getUserData("users", sampleData.users, 1);
     stepGoal = getUserStepGoal(userData);
-    average = getAllAvgSteps(sampleData.users);
+    average = getAllTimeAverage('dailyStepGoal', sampleData.users);
     user = getRandomUser(sampleData.users);
   });
 
@@ -66,7 +63,7 @@ describe("hydrationData", () => {
 
   it("should return a number of average all time water intake", () => {
     const userData = getUserData("hydrationData", hydrationData, 1);
-    const water = getAverageWater(userData);
+    const water = getAllTimeAverage('numOunces', userData);
 
     expect(water).to.be.a("number");
     expect(water).to.equal(45);
@@ -74,7 +71,7 @@ describe("hydrationData", () => {
 
   it("should return 0 if no user data is found", () => {
     const userData = getUserData("hydrationData", hydrationData, 4);
-    const water = getAverageWater(userData);
+    const water = getAllTimeAverage('numOunces', userData);
 
     expect(water).to.equal(0);
   });
@@ -155,20 +152,20 @@ describe("sleepData", () => {
 
   it("should return a users average sleep per day", () => {
     const userData = getUserData("sleepData", sleep, 1);
-    const sleeper = getAvgSleepPerDay(userData);
+    const sleeper = getAllTimeAverage('hoursSlept', userData);
 
     expect(sleeper).to.equal(9.6);
   });
 
   it("should return 0 if no user data is found", () => {
     const userData = getUserData("sleepData", sleep, 5);
-    const sleeper = getAvgSleepPerDay(userData);
+    const sleeper = getAllTimeAverage('hoursSlept',userData);
 
     expect(sleeper).to.equal(0);
   });
 
   it("should return the average of all time sleep quality", () => {
-    const userData = getAllAvgSleepQuality(sleep, 4);
+    const userData = getAllTimeAverage('sleepQuality', sleep);
 
     expect(userData).to.equal(3.6);
   });
