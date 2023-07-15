@@ -20,6 +20,10 @@ export function getRandomUser(users) {
   return getUserData('users', users, getRandomID(users));
 }
 
+export function getCurrentDate(userData) {
+  return userData[userData.length - 1].date;
+}
+
 /* Step Data */
 
 export function getAllAvgSteps(users) {
@@ -44,9 +48,6 @@ export function getAverageWater(userData) {
   );
 }
 
-export function getCurrentWaterDate(userData) {
-  return userData[userData.length - 1].date;
-}
 
 export function getDailyWater(userHydrationData, date) {
   const userData = userHydrationData.find((data) => data.date === date);
@@ -102,8 +103,16 @@ export function getSleepQuality(sleepData, date) {
 }
 
 export function getWeeklySleep(userData, date) {
-  const startCount = userData.findIndex((entry) => entry.date === date);
-  const weeklyData = userData.slice(startCount, startCount + 7).reverse();
+  let weeklyData;
+
+  const endCount = userData.findIndex((entry) => entry.date === date);
+  if (endCount - 7 < 0) {
+   weeklyData = userData.slice(0, endCount);
+  } else {
+    weeklyData = userData.slice(endCount - 7, endCount);
+  }
+
+  weeklyData.reverse();
 
   return weeklyData.reduce((acc, day) => {
     acc[day.date] = day.hoursSlept;
