@@ -1,5 +1,6 @@
 import { displayUsersName, showWeeklyWaterIntake } from './domUpdates';
 import './images/glass-of-water.png';
+import './images/zzzz.png';
 
 import './css/styles.css';
 import {
