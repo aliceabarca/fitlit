@@ -15,6 +15,7 @@ import {
   getActivityDataByDate,
   getCurrentDate,
   getAllTimeAverage,
+  getWeekly
 } from './model';
 import { getApiData } from './apiCalls';
 

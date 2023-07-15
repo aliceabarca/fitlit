@@ -48,6 +48,26 @@ export function getTodays(key, userData, date) {
   return userData[key];
 }
 
+export function getWeekly(key, userData, date) {
+  userData.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+  const indexOfDate = userData.findIndex((entry) => entry.date === date);
+  
+  let weeklyData;
+  if (userData.length <= 7) {
+    weeklyData = userData.slice(0, indexOfDate);
+   } else {
+     weeklyData = userData.slice(indexOfDate - 6, indexOfDate);
+   }
+
+  weeklyData.reverse();
+  return weeklyData.reduce((week, day) => {
+    week[day.date] = day[key];
+    return week;
+  }, {});
+}
+
+
 /* Step Data */
 
 export function getUserStepGoal(user) {
@@ -56,45 +76,36 @@ export function getUserStepGoal(user) {
 
 /* Water Data */
 
-export function getWeeklyWater(userData) {
-  userData = userData.slice(-7, -1);
+// export function getWeeklyWater(userData) {
+//   userData = userData.slice(-7, -1);
 
-  userData.sort((a, b) => new Date(b.date) - new Date(a.date));
+ 
 
-  return userData.reduce((week, day) => {
-    week[day.date] = day.numOunces;
-    return week;
-  }, {});
-}
 
 /* Sleep Data */
 
-export function getWeeklySleep(userData, date) {
-  let weeklyData;
+// export function getWeeklySleep(userData, date) {
+//   let weeklyData;
 
-  const endCount = userData.findIndex((entry) => entry.date === date);
-  if (endCount - 7 < 0) {
-   weeklyData = userData.slice(0, endCount);
-  } else {
-    weeklyData = userData.slice(endCount - 7, endCount);
-  }
+  
+ 
 
-  weeklyData.reverse();
+//   weeklyData.reverse();
 
-  return weeklyData.reduce((acc, day) => {
-    acc[day.date] = day.hoursSlept;
-    return acc;
-  }, {});
-}
+//   return weeklyData.reduce((acc, day) => {
+//     acc[day.date] = day.hoursSlept;
+//     return acc;
+//   }, {});
+// }
 
-export function getWeeklySleepQuality(userData) {
-  userData.sort((a, b) => new Date(b.date) - new Date(a.date));
+// export function getWeeklySleepQuality(userData) {
+//   userData.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-  return userData.reduce((week, day) => {
-    week[day.date] = day.hoursSlept;
-    return week;
-  }, {});
-}
+//   return userData.reduce((week, day) => {
+//     week[day.date] = day.hoursSlept;
+//     return week;
+//   }, {});
+// }
   /* Activity Data */
 
 export function getActivityDataByDate(activityData, id, date) {
