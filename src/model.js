@@ -5,10 +5,10 @@ export function getUserData(dataType, users, id) {
     dataType === 'hydrationData' ||
     dataType === 'sleepData' ||
     dataType === 'activityData'
-  )  {
+  ) {
     return users.filter(data => data.userID === id);
   } else {
-    return users.find((data) => data.id === id);
+    return users.find(data => data.id === id);
   }
 }
 
@@ -40,7 +40,7 @@ export function getAverageWater(userData) {
   }
 
   return Math.round(
-    userData.reduce((sum, date) => sum + date.numOunces, 0) / userData.length
+    userData.reduce((sum, date) => sum + date.numOunces, 0) / userData.length,
   );
 }
 
@@ -49,7 +49,7 @@ export function getCurrentWaterDate(userData) {
 }
 
 export function getDailyWater(userHydrationData, date) {
-  const userData = userHydrationData.find((data) => data.date === date);
+  const userData = userHydrationData.find(data => data.date === date);
 
   if (!userData) {
     return 0;
@@ -91,18 +91,18 @@ export function getAllAvgSleepQuality(userData) {
 }
 
 export function getDailySleep(sleepData, data) {
-  const userData = sleepData.find((date) => data === date.date);
+  const userData = sleepData.find(date => data === date.date);
 
   return userData.hoursSlept;
 }
 
 export function getSleepQuality(sleepData, date) {
-  const userData = sleepData.find((data) => data.date === date);
+  const userData = sleepData.find(data => data.date === date);
   return userData.sleepQuality;
 }
 
 export function getWeeklySleep(userData, date) {
-  const startCount = userData.findIndex((entry) => entry.date === date);
+  const startCount = userData.findIndex(entry => entry.date === date);
   const weeklyData = userData.slice(startCount, startCount + 7).reverse();
 
   return weeklyData.reduce((acc, day) => {
@@ -119,11 +119,11 @@ export function getWeeklySleepQuality(userData) {
     return week;
   }, {});
 }
-  /* Activity Data */
+/* Activity Data */
 
 export function getActivityDataByDate(activityData, id, date) {
   return getUserData('activityData', activityData, id).find(
-    (data) => data.date === date,
+    data => data.date === date,
   );
 }
 
