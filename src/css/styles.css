@@ -39,6 +39,10 @@ section {
   color: #e9c4e0;
 }
 
+canvas {
+  background-color: rgba(217, 217, 217, 0.75);
+}
+
 h1 {
   font-family: 'Neonderthaw', cursive;
   font-size: 90px;
