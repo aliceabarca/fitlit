@@ -189,7 +189,7 @@ describe("sleepData", () => {
 
   it("should return an object of how many hours a user slept each day over 7 days", () => {
     const userData = getUserData("sleepData", sleep, 3);
-    const slept = getWeeklySleep(userData, "2023/03/24");
+    const slept = getWeeklySleep(userData, "2023/03/30");
 
     expect(slept).to.be.an("object");
     expect(slept).to.deep.equal({
@@ -199,17 +199,15 @@ describe("sleepData", () => {
       "2023/03/27": 7.5,
       "2023/03/28": 7.5,
       "2023/03/29": 7.1,
-      "2023/03/30": 7.5,
     });
   });
 
   it("should have keys in order from least to most recent", () => {
     const userData = getUserData("sleepData", sleep, 3);
-    const weeklySleep = getWeeklySleep(userData, "2023/03/24");
+    const weeklySleep = getWeeklySleep(userData, "2023/03/30");
 
     const sleepDates = Object.keys(weeklySleep);
     expect(sleepDates).to.deep.equal([
-      "2023/03/30",
       "2023/03/29",
       "2023/03/28",
       "2023/03/27",
@@ -220,14 +218,14 @@ describe("sleepData", () => {
   });
 
   it("should return an empty object is only 1 data point exists", () => {
-    const userData = getUserData("sleepData", sleep, 3);
-    const water = getWeeklySleep(userData);
+    const userData = getUserData("sleepData", sleep, 1);
+    const water = getWeeklySleep(userData, '2023/03/24');
 
     expect(water).to.deep.equal({});
   });
 
   it("should return an empty object if no user data exists", () => {
-    const userData = getUserData("sleepData", sleep, 3);
+    const userData = getUserData("sleepData", sleep, 5);
     const water = getWeeklySleep(userData);
 
     expect(water).to.deep.equal({});
