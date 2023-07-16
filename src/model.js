@@ -76,37 +76,16 @@ export function getUserStepGoal(user) {
 
 /* Water Data */
 
-// export function getWeeklyWater(userData) {
-//   userData = userData.slice(-7, -1);
-
- 
-
-
 /* Sleep Data */
-
-// export function getWeeklySleep(userData, date) {
-//   let weeklyData;
-
-  
- 
 
 export function getDailySleep(sleepData, data) {
   const userData = sleepData.find(date => data === date.date);
-//   weeklyData.reverse();
 
-//   return weeklyData.reduce((acc, day) => {
-//     acc[day.date] = day.hoursSlept;
-//     return acc;
-//   }, {});
-}
-
-export function getSleepQuality(sleepData, date) {
-  const userData = sleepData.find(data => data.date === date);
-  return userData.sleepQuality;
+  return userData.hoursSlept;
 }
 
 export function getWeeklySleep(userData, date) {
-  const startCount = userData.findIndex((entry) => entry.date === date);
+  const startCount = userData.findIndex(entry => entry.date === date);
   const weeklyData = userData.slice(startCount, startCount + 7).reverse();
 
   return weeklyData.reduce((acc, day) => {
@@ -123,7 +102,7 @@ export function getWeeklySleepQuality(userData) {
     return week;
   }, {});
 }
-  /* Activity Data */
+/* Activity Data */
 
 export function getActivityDataByDate(activityData, id, date) {
   return getUserData('activityData', activityData, id).find(
