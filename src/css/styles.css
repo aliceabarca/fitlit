@@ -51,7 +51,7 @@ h1 {
   text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff,
     0 0 42px rgb(242, 171, 214), 0 0 82px #f09, 0 0 92px rgb(240, 61, 168),
     0 0 102px #f09, 0 0 151px #f09;
-  animation: pulsate 1s ease-in-out infinite alternate;
+  animation: pulsate .5s ease-in-out infinite alternate;
 }
 
 h2 {
@@ -179,7 +179,7 @@ p {
 .average-sleep-quality-box,  
 .daily-sleep-quality-box, 
   .daily-sleep-hours-box  {
-  height: 26%;
+  height: 32%;
   width: 100%;
   border-radius: 8%;
 }
@@ -188,6 +188,7 @@ p {
   height: 20%;
   flex-direction: row;
   justify-content: space-evenly;
+  margin-top: 1%
 }
 
 .weekly-sleep-data-box {
@@ -195,6 +196,7 @@ p {
   flex-direction: row;
   justify-content: space-around;
   align-items: baseline; 
+  margin-bottom: 2%
 }
 
 .average-sleep-data-box {
