@@ -1,5 +1,5 @@
 
-import { getWeekly, getCurrentDate } from "./model";
+import { getWeekly, getCurrentDate, getTodays } from "./model";
 const userInfo = document.querySelector('.data-box');
 const userStepsEl = document.querySelector('.user-steps .steps');
 const avgStepsEl = document.querySelector('.avg-steps .steps');
@@ -8,6 +8,8 @@ const usersName = document.querySelector('h2');
 const weeklyWaterIntake = document.querySelector('.weekly-water-box');
 const glassBox = document.querySelector('.glass-box');
 const weeklySleepBox = document.querySelector('.weekly-sleep-data-box');
+const dailySleepBox = document.querySelector('.daily-sleep-hours-box');
+const dailyQualitySleepBox = document.querySelector('.daily-sleep-quality-box');
 
 export function displayUsersName(user) {
   const firstName = user.name.split(' ')[0]
@@ -73,3 +75,4 @@ export function showWeeklySleepData(sleep) {
     </article>`
   });
 }
+
