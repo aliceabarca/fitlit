@@ -56,6 +56,7 @@ function showWaterGlasses(ounces){
 
 export function showWeeklyWaterIntake(userHydrationData) {
   const weeklyWater = getWeekly('numOunces', userHydrationData, getCurrentDate(userHydrationData));
+  const weeklyWater = getWeekly('numOunces', userHydrationData, getCurrentDate(userHydrationData));
   const days = Object.keys(weeklyWater);
   days.forEach(day => {
     weeklyWaterIntake.innerHTML += `<article class="week-day" >
@@ -75,4 +76,3 @@ export function showWeeklySleepData(sleep) {
     </article>`
   });
 }
-
