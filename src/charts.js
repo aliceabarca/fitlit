@@ -1,7 +1,6 @@
 import Chart from 'chart.js/auto';
 
 export function WeeklyStepsVsGoal(weekData, goal) {
-  console.log(weekData);
   new Chart(document.getElementById('weekly-steps-bar-chart'), {
     type: 'bar',
     data: {

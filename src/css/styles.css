@@ -28,6 +28,7 @@ div {
 
 section {
   width: 90%;
+  height: 50%;
   margin: 5%;
   border: solid #ff50a5 3px;
   border-radius: 8px;
@@ -50,7 +51,7 @@ h1 {
   text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff,
     0 0 42px rgb(242, 171, 214), 0 0 82px #f09, 0 0 92px rgb(240, 61, 168),
     0 0 102px #f09, 0 0 151px #f09;
-  animation: pulsate 0.5s ease-in-out infinite alternate;
+  animation: pulsate 1s ease-in-out infinite alternate;
 }
 
 h2 {
@@ -61,7 +62,7 @@ h2 {
 
 h3 {
   font-family: 'Lobster', cursive;
-  font-size: 30px;
+  font-size: 26px;
   margin: 3%;
 }
 
@@ -85,6 +86,10 @@ p {
   width: 250px;
   margin-top: 15%;
   border-radius: 50%;
+}
+
+.average-comparison {
+  height: 44%
 }
 
 /* -------------Water--------------*/
@@ -152,6 +157,31 @@ p {
   height: 50%;
   margin-top: 0;
   margin-right: 0;
+}
+
+.sleep-data {
+  display: flex;
+  flex-direction: row;
+  height: 28%;
+  justify-content: space-between;
+  width: 88%;
+  margin-top: -5%;
+}
+
+.daily-sleep-hours-box, .daily-sleep-quality-box {
+  height: 100%;
+  width: 100%;
+  border-radius: 8%;
+  margin-bottom: -11%;
+}
+
+.weekly-sleep-data-box {
+  height: 60%;
+}
+
+
+h4 {
+margin-top: 8%
 }
 
 /* -------------User--------------*/
