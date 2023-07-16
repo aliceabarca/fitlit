@@ -74,35 +74,6 @@ export function getUserStepGoal(user) {
   return user.dailyStepGoal;
 }
 
-
-/* Water Data */
-
-/* Sleep Data */
-
-export function getDailySleep(sleepData, data) {
-  const userData = sleepData.find(date => data === date.date);
-
-  return userData.hoursSlept;
-}
-
-export function getWeeklySleep(userData, date) {
-  const startCount = userData.findIndex(entry => entry.date === date);
-  const weeklyData = userData.slice(startCount, startCount + 7).reverse();
-
-  return weeklyData.reduce((acc, day) => {
-    acc[day.date] = day.hoursSlept;
-    return acc;
-  }, {});
-}
-
-export function getWeeklySleepQuality(userData) {
-  userData.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-  return userData.reduce((week, day) => {
-    week[day.date] = day.hoursSlept;
-    return week;
-  }, {});
-}
 /* Activity Data */
 
 export function getActivityDataByDate(activityData, id, date) {
