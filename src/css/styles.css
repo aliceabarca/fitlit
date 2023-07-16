@@ -194,7 +194,7 @@ p {
 .weekly-sleep-data-box {
   width: 100%;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: baseline; 
   margin-bottom: 2%
 }
