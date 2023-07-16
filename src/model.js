@@ -74,63 +74,58 @@ export function getUserStepGoal(user) {
   return user.dailyStepGoal;
 }
 
+
 /* Water Data */
 
-// export function getWeeklyWater(userData) {
-//   userData = userData.slice(-7, -1);
-
- 
-
-
-/* Sleep Data */
-
-// export function getWeeklySleep(userData, date) {
-//   let weeklyData;
-
+export function getWeeklyWater(userData) {
+  userData = userData.slice(-7, -1);
+}
   
- 
-
-//   weeklyData.reverse();
-
-//   return weeklyData.reduce((acc, day) => {
-//     acc[day.date] = day.hoursSlept;
-//     return acc;
-//   }, {});
-// }
-
-// export function getWeeklySleepQuality(userData) {
-//   userData.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-//   return userData.reduce((week, day) => {
-//     week[day.date] = day.hoursSlept;
-//     return week;
-//   }, {});
-// }
-  /* Activity Data */
-
-export function getActivityDataByDate(activityData, id, date) {
-  return getUserData('activityData', activityData, id).find(
-    (data) => data.date === date,
-  );
-}
-
-export function getMinutesActive(activityData) {
-  return activityData.minutesActive;
-}
-
-export function compareStepsWithGoal(userData, activityData) {
-  if (userData.dailyStepGoal <= activityData.numSteps) {
-    return true;
+/* Sleep Data */
+  
+  export function getWeeklySleep(userData, date) {
+    let weeklyData;
+    weeklyData.reverse();
+  
+    return weeklyData.reduce((acc, day) => {
+      acc[day.date] = day.hoursSlept;
+      return acc;
+    }, {});
   }
-
-  return false;
-}
-
-// Accepts a single user's data as userData param
-// Accepts all activity data
-export function calculateDistanceTraveled(userData, date, activityData) {
-  const mile = 5280;
-  activityData = getActivityDataByDate(activityData, userData.id, date);
-  const distance = (userData.strideLength * activityData.numSteps) / mile;
-  return parseFloat(distance.toFixed(2));
-}
+  
+  export function getWeeklySleepQuality(userData) {
+    userData.sort((a, b) => new Date(b.date) - new Date(a.date));
+    
+    return userData.reduce((week, day) => {
+      week[day.date] = day.hoursSlept;
+      return week;
+    }, {});
+  }
+   
+  /* Activity Data */
+  
+  export function getActivityDataByDate(activityData, id, date) {
+    return getUserData('activityData', activityData, id).find(
+      (data) => data.date === date,
+    );
+  }
+  
+  export function getMinutesActive(activityData) {
+    return activityData.minutesActive;
+  }
+  
+  export function compareStepsWithGoal(userData, activityData) {
+    if (userData.dailyStepGoal <= activityData.numSteps) {
+      return true;
+    }
+      return false;
+  }
+  
+  // Accepts a single user's data as userData param
+  // Accepts all activity data
+  export function calculateDistanceTraveled(userData, date, activityData) {
+    const mile = 5280;
+    activityData = getActivityDataByDate(activityData, userData.id, date);
+    const distance = (userData.strideLength * activityData.numSteps) / mile;
+    return parseFloat(distance.toFixed(2));
+  };
