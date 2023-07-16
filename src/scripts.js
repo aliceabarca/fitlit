@@ -1,4 +1,4 @@
-import { displayUsersName, showWeeklyWaterIntake } from './domUpdates';
+import { displayUsersName, showWeeklySleepData, showWeeklyWaterIntake } from './domUpdates';
 import './images/glass-of-water.png';
 import './images/zzzz.png';
 
@@ -10,12 +10,13 @@ import {
 } from './domUpdates';
 import {
   getRandomUser,
-  getAllAvgSteps,
-  getDailyWater,
   getUserData,
-  getCurrentWaterDate,
+  getTodays,
   calculateDistanceTraveled,
   getActivityDataByDate,
+  getCurrentDate,
+  getAllTimeAverage,
+  getWeekly
 } from './model';
 import { getApiData } from './apiCalls';
 
@@ -71,15 +72,21 @@ function processUserData() {
   store.setKey('user', getRandomUser(userData));
   const user = store.getKey('user');
   const userSteps = user.dailyStepGoal;
-  const avg = getAllAvgSteps(userData);
+  const avg = getAllTimeAverage('dailyStepGoal', userData);
   const userHydrationData = getUserData(
     'hydrationData',
     store.getKey('hydrationData'),
     user.id,
   );
-  showCurrentDayWaterIntake(getDailyWater(userHydrationData, '2023/03/31'));
+  const userSleepData = getUserData(
+    'sleepData',
+    store.getKey('sleepData'),
+    user.id
+  )
+  showCurrentDayWaterIntake(getTodays('numOunces', userHydrationData, getCurrentDate(userHydrationData)));
   showUserData(store.getKey('user'));
   showUserStepsVsAvg(userSteps, avg);
   displayUsersName(store.getKey('user'));
   showWeeklyWaterIntake(userHydrationData);
+  showWeeklySleepData(userSleepData);
 }
