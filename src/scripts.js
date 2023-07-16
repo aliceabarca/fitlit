@@ -1,4 +1,4 @@
-import { displayUsersName, showWeeklySleepData, showWeeklyWaterIntake } from './domUpdates';
+import { displayUsersName, showWeeklySleepData, showWeeklyWaterIntake, showDailySleepData, showDailySleepQuality} from './domUpdates';
 import './images/glass-of-water.png';
 import './images/zzzz.png';
 
@@ -89,4 +89,6 @@ function processUserData() {
   displayUsersName(store.getKey('user'));
   showWeeklyWaterIntake(userHydrationData);
   showWeeklySleepData(userSleepData);
+  showDailySleepData(userSleepData);
+  showDailySleepQuality(userSleepData);
 }
