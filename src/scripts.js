@@ -13,6 +13,7 @@ import {
   displayWeeklyStepData,
   sleepAverage,
   displayTodaysStepData,
+  weeklyQualitySleep,
 } from './domUpdates';
 import {
   getRandomUser,
@@ -113,4 +114,5 @@ function processUserData() {
   sleepAverage(userSleepData);
   showDailySleepData(userSleepData);
   showDailySleepQuality(userSleepData);
+  weeklyQualitySleep(userSleepData);
 }
