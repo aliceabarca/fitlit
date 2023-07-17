@@ -6,9 +6,9 @@ export function getUserData(dataType, users, id) {
     dataType === 'sleepData' ||
     dataType === 'activityData'
   ) {
-    return users.filter((data) => data.userID === id);
+    return users.filter(data => data.userID === id);
   } else {
-    return users.find((data) => data.id === id);
+    return users.find(data => data.id === id);
   }
 }
 
@@ -40,7 +40,7 @@ export function getAllTimeAverage(key, userData) {
 }
 
 export function getTodays(key, userData, date) {
-  userData = userData.find((data) => data.date === date);
+  userData = userData.find(data => data.date === date);
 
   if (!userData) {
     return 0;
@@ -52,7 +52,7 @@ export function getTodays(key, userData, date) {
 export function getWeekly(key, userData, date) {
   userData.sort((a, b) => new Date(a.date) - new Date(b.date));
 
-  const indexOfDate = userData.findIndex((entry) => entry.date === date);
+  const indexOfDate = userData.findIndex(entry => entry.date === date);
 
   let weeklyData;
   if (userData.length <= 7) {
@@ -78,7 +78,7 @@ export function getUserStepGoal(user) {
 
 export function getActivityDataByDate(activityData, id, date) {
   return getUserData('activityData', activityData, id).find(
-    (data) => data.date === date
+    data => data.date === date
   );
 }
 
