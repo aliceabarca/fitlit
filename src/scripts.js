@@ -63,7 +63,7 @@ function initializeApp() {
     getApiData(store.getAPIKey('hydration'), 'hydrationData'),
     getApiData(store.getAPIKey('activity'), 'activityData'),
   ])
-    .then((values) => {
+    .then(values => {
       const [users, sleepData, hydrationData, activityData] = values;
       store.setKey('userData', users);
       store.setKey('sleepData', sleepData);
