@@ -1,9 +1,9 @@
-import { WeeklyStepsVsGoal, stepProgressBar } from "./charts";
-import { getWeekly, getCurrentDate } from "./model";
+import { WeeklyStepsVsGoal, stepProgressBar } from './charts';
+import { getWeekly, getCurrentDate } from './model';
 const userInfo = document.querySelector('.data-box');
 const userStepsEl = document.querySelector('.user-steps .steps');
 const avgStepsEl = document.querySelector('.avg-steps .steps');
-const waterIntake = document.querySelector('.water-intake')
+const waterIntake = document.querySelector('.water-intake');
 const usersName = document.querySelector('h2');
 const weeklyWaterIntake = document.querySelector('.weekly-water-box');
 const glassBox = document.querySelector('.glass-box');
@@ -11,7 +11,7 @@ const weeklySleepBox = document.querySelector('.weekly-sleep-data-box');
 const stepBox = document.getElementById('current-steps');
 
 export function displayUsersName(user) {
-  const firstName = user.name.split(' ')[0]
+  const firstName = user.name.split(' ')[0];
   usersName.innerText = `Hello, ${firstName}!`;
 }
 
@@ -33,12 +33,12 @@ export function showUserStepsVsAvg(userSteps, avg) {
 }
 
 export function showCurrentDayWaterIntake(currentIntake) {
-  showWaterGlasses(currentIntake)
-  waterIntake.innerText = `Today : ${currentIntake} ounces`
+  showWaterGlasses(currentIntake);
+  waterIntake.innerText = `Today : ${currentIntake} ounces`;
 }
 
-function showWaterGlasses(ounces){
-  const amount = Math.floor(ounces / 10)
+function showWaterGlasses(ounces) {
+  const amount = Math.floor(ounces / 10);
 
   if (amount > 9) {
     amount = 9;
@@ -50,33 +50,39 @@ function showWaterGlasses(ounces){
     html += `<img class="water" src="./images/glass-of-water.png"/>`;
   }
 
-  glassBox.innerHTML = `${html}`
+  glassBox.innerHTML = `${html}`;
 }
 
 export function showWeeklyWaterIntake(userHydrationData) {
-  const weeklyWater = getWeekly('numOunces', userHydrationData, getCurrentDate(userHydrationData));
+  const weeklyWater = getWeekly(
+    'numOunces',
+    userHydrationData,
+    getCurrentDate(userHydrationData),
+  );
   const days = Object.keys(weeklyWater);
   days.forEach(day => {
     weeklyWaterIntake.innerHTML += `<article class="week-day" >
                                     <p class="date" >${day.slice(5)}</p>
-                                    <p class="weekly-ounces">${weeklyWater[day]}</p>
-                                    </article>`
-  }) 
+                                    <p class="weekly-ounces">${
+                                      weeklyWater[day]
+                                    }</p>
+                                    </article>`;
+  });
 }
 
 export function showWeeklySleepData(sleep) {
-  const weeklySleep = getWeekly('hoursSlept',sleep, getCurrentDate(sleep));
+  const weeklySleep = getWeekly('hoursSlept', sleep, getCurrentDate(sleep));
   const sleeps = Object.keys(weeklySleep);
   sleeps.forEach(day => {
     weeklySleepBox.innerHTML += `<article class="week-day" >
     <p class="date" >${day.slice(5)}</p>
     <p class="weekly-ounces">${weeklySleep[day]}</p>
-    </article>`
+    </article>`;
   });
 }
 
 export function displayWeeklyStepData(weekData, goal) {
-  WeeklyStepsVsGoal(weekData, goal)
+  WeeklyStepsVsGoal(weekData, goal);
 }
 
 export function displayTodaysStepData(stepData, goal) {

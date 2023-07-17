@@ -1,6 +1,6 @@
 * {
   border: 0;
-  margin: 0
+  margin: 0;
 }
 
 body,
@@ -73,7 +73,6 @@ p {
   color: #e9c4e0;
 }
 
-
 /* ----------Activity------------- */
 
 .activity-box {
@@ -82,7 +81,7 @@ p {
 }
 
 .steps-circle {
- height: 230px;
+  height: 230px;
   width: 90%;
   margin-top: 0px;
   /* display: flex;
@@ -99,14 +98,12 @@ p {
   margin-bottom: 90px;
 }
 
-
-
 .avg-comparison {
   height: 15%;
 }
 
 .weekly-steps {
-  height:auto;
+  height: auto;
   width: auto;
 }
 
@@ -186,7 +183,8 @@ p {
   margin-top: -5%;
 }
 
-.daily-sleep-hours-box, .daily-sleep-quality-box {
+.daily-sleep-hours-box,
+.daily-sleep-quality-box {
   height: 100%;
   width: 100%;
   border-radius: 8%;
@@ -197,14 +195,13 @@ p {
   height: 60%;
 }
 
-
 h4 {
-margin-top: 8%
+  margin-top: 8%;
 }
 
 .zzzz-img {
   height: 75px;
-  margin-top: 13%
+  margin-top: 13%;
 }
 
 /* -------------User--------------*/
@@ -233,25 +230,11 @@ margin-top: 8%
 
 @keyframes pulsate {
   100% {
-    text-shadow:
-      0 0 4px #fff,
-      0 0 11px #fff,
-      0 0 19px #fff,
-      0 0 40px #f09,
-      0 0 80px #f09,
-      0 0 90px #f09,
-      0 0 100px #f09,
-      0 0 150px #f09;
+    text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #f09,
+      0 0 80px #f09, 0 0 90px #f09, 0 0 100px #f09, 0 0 150px #f09;
   }
- 0% {
-    text-shadow:
-      0 0 4px #fff,
-      0 0 10px #fff,
-      0 0 18px #fff,
-      0 0 38px #f09,
-      0 0 73px #f09,
-      0 0 80px #f09,
-      0 0 94px #f09,
-      0 0 140px #f09;
+  0% {
+    text-shadow: 0 0 4px #fff, 0 0 10px #fff, 0 0 18px #fff, 0 0 38px #f09,
+      0 0 73px #f09, 0 0 80px #f09, 0 0 94px #f09, 0 0 140px #f09;
   }
 }
