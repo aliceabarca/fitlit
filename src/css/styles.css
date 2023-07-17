@@ -45,7 +45,7 @@ canvas {
 }
 
 h1 {
-  font-family: "Neonderthaw", cursive;
+  font-family: 'Neonderthaw', cursive;
   font-size: 90px;
   color: #fab5d7;
   text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff,
@@ -55,13 +55,13 @@ h1 {
 }
 
 h2 {
-  font-family: "Fasthand", cursive;
+  font-family: 'Fasthand', cursive;
   font-size: 50px;
   color: #e9c4e0;
 }
 
 h3 {
-  font-family: "Lobster", cursive;
+  font-family: 'Lobster', cursive;
   font-size: 26px;
   margin: 0%;
 }
@@ -73,7 +73,7 @@ h5 {
 }
 
 p {
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 15px;
   margin: 15px 0px;
   color: #e9c4e0;
