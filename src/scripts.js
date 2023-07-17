@@ -9,6 +9,7 @@ import {
   showUserStepsVsAvg,
   showCurrentDayWaterIntake,
   displayWeeklyStepData,
+  sleepAverage,
 } from './domUpdates';
 import {
   getRandomUser,
@@ -98,4 +99,5 @@ function processUserData() {
   showWeeklyWaterIntake(userHydrationData);
   displayWeeklyStepData(userWeeklyActivityData, user.dailyStepGoal);
   showWeeklySleepData(userSleepData);
+  sleepAverage(userSleepData);
 }
