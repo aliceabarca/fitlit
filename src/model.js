@@ -78,7 +78,7 @@ export function getUserStepGoal(user) {
 
 export function getActivityDataByDate(activityData, id, date) {
   return getUserData('activityData', activityData, id).find(
-    data => data.date === date,
+    data => data.date === date
   );
 }
 

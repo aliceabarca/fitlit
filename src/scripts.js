@@ -11,6 +11,7 @@ import {
   showUserStepsVsAvg,
   showCurrentDayWaterIntake,
   displayWeeklyStepData,
+  sleepAverage,
   displayTodaysStepData,
 } from './domUpdates';
 import {
@@ -81,30 +82,26 @@ function processUserData() {
   const userHydrationData = getUserData(
     'hydrationData',
     store.getKey('hydrationData'),
-    user.id,
+    user.id
   );
   const userSleepData = getUserData(
     'sleepData',
     store.getKey('sleepData'),
-    user.id,
+    user.id
   );
   const userActivityData = getUserData(
     'activityData',
     store.getKey('activityData'),
-    user.id,
+    user.id
   );
   const userWeeklyActivityData = userActivityData.slice(-7);
   const dailyStepData = getTodays(
     'numSteps',
     userActivityData,
-    getCurrentDate(userActivityData),
+    getCurrentDate(userActivityData)
   );
   showCurrentDayWaterIntake(
-    getTodays(
-      'numOunces',
-      userHydrationData,
-      getCurrentDate(userHydrationData),
-    ),
+    getTodays('numOunces', userHydrationData, getCurrentDate(userHydrationData))
   );
   showUserData(store.getKey('user'));
   showUserStepsVsAvg(userSteps, avg);
@@ -113,6 +110,7 @@ function processUserData() {
   displayWeeklyStepData(userWeeklyActivityData, user.dailyStepGoal);
   displayTodaysStepData(dailyStepData, user.dailyStepGoal);
   showWeeklySleepData(userSleepData);
+  sleepAverage(userSleepData);
   showDailySleepData(userSleepData);
   showDailySleepQuality(userSleepData);
 }
