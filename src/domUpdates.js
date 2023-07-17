@@ -130,7 +130,6 @@ export function weeklyQualitySleep() {
     weeklySleepQuality.innerHTML += `<article class="week-day" >
     <p class="date" >${day.slice(5)}</p>
     <p class="weekly-ounces">${weeklyQuality[day]}</p>
-    </article>`
+    </article>`;
   });
-
 }
