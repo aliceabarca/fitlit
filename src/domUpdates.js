@@ -38,7 +38,7 @@ export function showCurrentDayWaterIntake(currentIntake) {
 }
 
 function showWaterGlasses(ounces) {
-  const amount = Math.floor(ounces / 10);
+  let amount = Math.floor(ounces / 10);
 
   if (amount > 9) {
     amount = 9;
