@@ -193,7 +193,8 @@ p {
 .average-hours-slept-box,
 .average-sleep-quality-box,  
 .daily-sleep-quality-box, 
-  .daily-sleep-hours-box  {
+  .daily-sleep-hours-box,
+  .average-hours-sleep-box {
   height: 32%;
   width: 100%;
   border-radius: 8%;
