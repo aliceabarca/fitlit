@@ -80,3 +80,6 @@ export function displayWeeklyStepData(weekData, goal) {
   WeeklyStepsVsGoal(weekData, goal)
 }
 
+export function sleepAverage() {
+  
+}
