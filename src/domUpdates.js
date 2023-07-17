@@ -82,6 +82,8 @@ export function displayWeeklyStepData(weekData, goal) {
 
 export function sleepAverage(sleep) {
   const sleepQuality = getAllTimeAverage('sleepQuality', sleep);
+  const sleepHours = getAllTimeAverage('hoursSlept', sleep);
 
   allTimeSleepQuality.innerText = `${sleepQuality}`;
+  allTimeSleepHours.innerText = `${sleepHours}`
 }
