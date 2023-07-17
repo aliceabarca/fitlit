@@ -8,8 +8,8 @@ const usersName = document.querySelector('h2');
 const weeklyWaterIntake = document.querySelector('.weekly-water-box');
 const glassBox = document.querySelector('.glass-box');
 const weeklySleepBox = document.querySelector('.weekly-sleep-data-box');
-const allTimeSleepQuality = document.querySelector('.all-time-sleep-quality');
-const allTimeSleepHours = document.querySelector('.all-time-sleep-hours');
+const allTimeSleepQuality = document.querySelector('.average-sleep-quality-box');
+const allTimeSleepHours = document.querySelector('.average-hours-sleep-box');
 
 export function displayUsersName(user) {
   const firstName = user.name.split(' ')[0]
@@ -81,9 +81,9 @@ export function displayWeeklyStepData(weekData, goal) {
 }
 
 export function sleepAverage(sleep) {
-  const sleepQuality = getAllTimeAverage('sleepQuality', sleep);
   const sleepHours = getAllTimeAverage('hoursSlept', sleep);
+  const sleepQuality = getAllTimeAverage('sleepQuality', sleep);
 
+  allTimeSleepHours.innerText = `${sleepHours}`;
   allTimeSleepQuality.innerText = `${sleepQuality}`;
-  allTimeSleepHours.innerText = `${sleepHours}`
 }
