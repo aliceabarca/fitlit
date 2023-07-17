@@ -20,6 +20,7 @@ const allTimeSleepHours = document.querySelector('.average-hours-sleep-box');
 const dailySleepBox = document.querySelector('.daily-sleep-hours-box');
 const dailyQualitySleepBox = document.querySelector('.daily-sleep-quality-box');
 const stepBox = document.getElementById('current-steps');
+const weeklySleepQuality = document.querySelector('.weekly-sleep-quality-box');
 
 export function displayUsersName(user) {
   const firstName = user.name.split(' ')[0];
@@ -120,4 +121,16 @@ export function sleepAverage(sleep) {
 
   allTimeSleepHours.innerText = `${sleepHours}`;
   allTimeSleepQuality.innerText = `${sleepQuality}`;
+}
+
+export function weeklyQualitySleep() {
+  const weeklyQuality = getWeekly('sleepQuality', sleep, getCurrentDate(sleep));
+  const sleepQuality = Object.keys(weeklyQuality);
+  sleepQuality.forEach(day => {
+    weeklySleepQuality.innerHTML += `<article class="week-day" >
+    <p class="date" >${day.slice(5)}</p>
+    <p class="weekly-ounces">${weeklyQuality[day]}</p>
+    </article>`
+  });
+
 }
