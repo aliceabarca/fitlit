@@ -29,9 +29,10 @@ export function getAllTimeAverage(key, userData) {
     return 0;
   }
 
-  const avg = userData.reduce((sum, date) => sum + date[key], 0) / userData.length;
+  const avg =
+    userData.reduce((sum, date) => sum + date[key], 0) / userData.length;
 
-  if(key === 'numOunces' || key === 'dailyStepGoal') {
+  if (key === 'numOunces' || key === 'dailyStepGoal') {
     return Math.round(avg);
   } else {
     return parseFloat(avg.toFixed(1));
@@ -39,7 +40,7 @@ export function getAllTimeAverage(key, userData) {
 }
 
 export function getTodays(key, userData, date) {
-  userData = userData.find((data) => data.date === date);
+  userData = userData.find(data => data.date === date);
 
   if (!userData) {
     return 0;
@@ -51,14 +52,14 @@ export function getTodays(key, userData, date) {
 export function getWeekly(key, userData, date) {
   userData.sort((a, b) => new Date(a.date) - new Date(b.date));
 
-  const indexOfDate = userData.findIndex((entry) => entry.date === date);
-  
+  const indexOfDate = userData.findIndex(entry => entry.date === date);
+
   let weeklyData;
   if (userData.length <= 7) {
     weeklyData = userData.slice(0, indexOfDate);
-   } else {
-     weeklyData = userData.slice(indexOfDate - 6, indexOfDate);
-   }
+  } else {
+    weeklyData = userData.slice(indexOfDate - 6, indexOfDate);
+  }
 
   weeklyData.reverse();
   return weeklyData.reduce((week, day) => {
@@ -66,7 +67,6 @@ export function getWeekly(key, userData, date) {
     return week;
   }, {});
 }
-
 
 /* Step Data */
 

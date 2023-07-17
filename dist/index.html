@@ -20,17 +20,18 @@
     <main>
       <div>
         <section class="activity-box">
-          <section class="steps-circle">
-            <h3>Steps</h3>
-          </section>
+          <h3>Steps</h3>
+          <div class="steps-circle">
+            <canvas id="steps-progress-bar" width="170"></canvas>
+            <div class="donut-inner">
+              <p id="current-steps"></p>
+            </div>
+          </div>
           <section class="avg-comparison">
-            <h3>How do you compare?</h3>
             <article class="user-steps">
-              <h3>You:</h3>
               <p class="steps"></p>
             </article>
             <article class="avg-steps">
-              <h3>Average:</h3>
               <p class="steps"></p>
             </article>
           </section>
@@ -46,8 +47,7 @@
             <p class="water-intake"></p>
             <div class="glass-box"></div>
           </section>
-          <div class="weekly-water-box">
-          </div>
+          <div class="weekly-water-box"></div>
         </section>
         
         <section class="sleep-box">
@@ -100,5 +100,3 @@
     <script src="bundle.js"></script>
   </body>
 </html>
-            
-

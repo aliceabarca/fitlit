@@ -1,6 +1,6 @@
 * {
   border: 0;
-  margin: 0
+  margin: 0;
 }
 
 body,
@@ -78,7 +78,6 @@ p {
   color: #e9c4e0;
 }
 
-
 /* ----------Activity------------- */
 
 .activity-box {
@@ -87,14 +86,30 @@ p {
 }
 
 .steps-circle {
-  height: 250px;
-  width: 250px;
-  margin-top: 15%;
-  border-radius: 50%;
+  height: 230px;
+  width: 90%;
+  margin-top: 0px;
+  /* display: flex;
+  justify-content: center;
+  align-content: center; */
 }
 
-.average-comparison {
-  height: 44%
+#steps-progress-bar {
+  background-color: rgba(217, 217, 217, 0);
+}
+
+.donut-inner {
+  margin-top: -125px;
+  margin-bottom: 90px;
+}
+
+.avg-comparison {
+  height: 15%;
+}
+
+.weekly-steps {
+  height: auto;
+  width: auto;
 }
 
 /* -------------Water--------------*/
@@ -241,7 +256,7 @@ p {
       0 0 100px #f09,
       0 0 150px #f09;
   }
- 0% {
+  0% {
     text-shadow:
       0 0 4px #fff,
       0 0 10px #fff,
