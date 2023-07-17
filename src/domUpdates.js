@@ -77,3 +77,4 @@ export function showWeeklySleepData(sleep) {
 export function displayWeeklyStepData(weekData, goal) {
   WeeklyStepsVsGoal(weekData, goal)
 }
+
