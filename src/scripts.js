@@ -1,6 +1,6 @@
-import './images/glass-of-water.png';
-import './images/zzzz.png';
-import './css/styles.css';
+import "./images/glass-of-water.png";
+import "./images/zzzz.png";
+import "./css/styles.css";
 import {
   displayUsersName,
   showWeeklySleepData,
@@ -13,7 +13,7 @@ import {
   displayWeeklyStepData,
   sleepAverage,
   displayTodaysStepData,
-} from './domUpdates';
+} from "./domUpdates";
 import {
   getRandomUser,
   getUserData,
@@ -23,15 +23,15 @@ import {
   getCurrentDate,
   getAllTimeAverage,
   getWeekly,
-} from './model';
-import { getApiData } from './apiCalls';
+} from "./model";
+import { getApiData } from "./apiCalls";
 
 function initializeStore() {
   const store = {
-    users: 'https://fitlit-api.herokuapp.com/api/v1/users',
-    sleep: 'https://fitlit-api.herokuapp.com/api/v1/sleep',
-    hydration: 'https://fitlit-api.herokuapp.com/api/v1/hydration',
-    activity: 'https://fitlit-api.herokuapp.com/api/v1/activity',
+    users: "https://fitlit-api.herokuapp.com/api/v1/users",
+    sleep: "https://fitlit-api.herokuapp.com/api/v1/sleep",
+    hydration: "https://fitlit-api.herokuapp.com/api/v1/hydration",
+    activity: "https://fitlit-api.herokuapp.com/api/v1/activity",
   };
 
   return {
@@ -58,58 +58,54 @@ window.onload = () => {
 
 function initializeApp() {
   Promise.all([
-    getApiData(store.getAPIKey('users'), 'users'),
-    getApiData(store.getAPIKey('sleep'), 'sleepData'),
-    getApiData(store.getAPIKey('hydration'), 'hydrationData'),
-    getApiData(store.getAPIKey('activity'), 'activityData'),
+    getApiData(store.getAPIKey("users"), "users"),
+    getApiData(store.getAPIKey("sleep"), "sleepData"),
+    getApiData(store.getAPIKey("hydration"), "hydrationData"),
+    getApiData(store.getAPIKey("activity"), "activityData"),
   ])
-    .then(values => {
+    .then((values) => {
       const [users, sleepData, hydrationData, activityData] = values;
-      store.setKey('userData', users);
-      store.setKey('sleepData', sleepData);
-      store.setKey('hydrationData', hydrationData);
-      store.setKey('activityData', activityData);
+      store.setKey("userData", users);
+      store.setKey("sleepData", sleepData);
+      store.setKey("hydrationData", hydrationData);
+      store.setKey("activityData", activityData);
     })
     .then(processUserData);
 }
 
 function processUserData() {
-  const userData = store.getKey('userData');
-  store.setKey('user', getRandomUser(userData));
-  const user = store.getKey('user');
+  const userData = store.getKey("userData");
+  store.setKey("user", getRandomUser(userData));
+  const user = store.getKey("user");
   const userSteps = user.dailyStepGoal;
-  const avg = getAllTimeAverage('dailyStepGoal', userData);
+  const avg = getAllTimeAverage("dailyStepGoal", userData);
   const userHydrationData = getUserData(
-    'hydrationData',
-    store.getKey('hydrationData'),
-    user.id,
+    "hydrationData",
+    store.getKey("hydrationData"),
+    user.id
   );
   const userSleepData = getUserData(
-    'sleepData',
-    store.getKey('sleepData'),
-    user.id,
+    "sleepData",
+    store.getKey("sleepData"),
+    user.id
   );
   const userActivityData = getUserData(
-    'activityData',
-    store.getKey('activityData'),
-    user.id,
+    "activityData",
+    store.getKey("activityData"),
+    user.id
   );
   const userWeeklyActivityData = userActivityData.slice(-7);
   const dailyStepData = getTodays(
-    'numSteps',
+    "numSteps",
     userActivityData,
-    getCurrentDate(userActivityData),
+    getCurrentDate(userActivityData)
   );
   showCurrentDayWaterIntake(
-    getTodays(
-      'numOunces',
-      userHydrationData,
-      getCurrentDate(userHydrationData),
-    ),
+    getTodays("numOunces", userHydrationData, getCurrentDate(userHydrationData))
   );
-  showUserData(store.getKey('user'));
+  showUserData(store.getKey("user"));
   showUserStepsVsAvg(userSteps, avg);
-  displayUsersName(store.getKey('user'));
+  displayUsersName(store.getKey("user"));
   showWeeklyWaterIntake(userHydrationData);
   displayWeeklyStepData(userWeeklyActivityData, user.dailyStepGoal);
   displayTodaysStepData(dailyStepData, user.dailyStepGoal);
