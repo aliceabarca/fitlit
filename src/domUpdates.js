@@ -28,8 +28,8 @@ export function showUserData(user) {
 }
 
 export function showUserStepsVsAvg(userSteps, avg) {
-  userStepsEl.innerText = userSteps;
-  avgStepsEl.innerText = avg;
+  userStepsEl.innerText = `Your Step Goal: ${userSteps}`;
+  avgStepsEl.innerText = `Average Step Goal: ${avg}`;
 }
 
 export function showCurrentDayWaterIntake(currentIntake) {
