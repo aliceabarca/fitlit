@@ -1,6 +1,6 @@
 * {
   border: 0;
-  margin: 0
+  margin: 0;
 }
 
 body,
@@ -51,7 +51,7 @@ h1 {
   text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff,
     0 0 42px rgb(242, 171, 214), 0 0 82px #f09, 0 0 92px rgb(240, 61, 168),
     0 0 102px #f09, 0 0 151px #f09;
-  animation: pulsate 1s ease-in-out infinite alternate;
+  animation: pulsate .5s ease-in-out infinite alternate;
 }
 
 h2 {
@@ -63,7 +63,12 @@ h2 {
 h3 {
   font-family: 'Lobster', cursive;
   font-size: 26px;
-  margin: 3%;
+  margin: 0%;
+}
+
+h4, h5 {
+  height: 18%;
+  font-size: 16px;
 }
 
 p {
@@ -73,7 +78,6 @@ p {
   color: #e9c4e0;
 }
 
-
 /* ----------Activity------------- */
 
 .activity-box {
@@ -82,14 +86,30 @@ p {
 }
 
 .steps-circle {
-  height: 250px;
-  width: 250px;
-  margin-top: 15%;
-  border-radius: 50%;
+  height: 230px;
+  width: 90%;
+  margin-top: 0px;
+  /* display: flex;
+  justify-content: center;
+  align-content: center; */
 }
 
-.average-comparison {
-  height: 44%
+#steps-progress-bar {
+  background-color: rgba(217, 217, 217, 0);
+}
+
+.donut-inner {
+  margin-top: -125px;
+  margin-bottom: 90px;
+}
+
+.avg-comparison {
+  height: 15%;
+}
+
+.weekly-steps {
+  height: auto;
+  width: auto;
 }
 
 /* -------------Water--------------*/
@@ -157,6 +177,8 @@ p {
   height: 50%;
   margin-top: 0;
   margin-right: 0;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .sleep-data {
@@ -165,28 +187,37 @@ p {
   height: 28%;
   justify-content: space-between;
   width: 88%;
-  margin-top: -5%;
 }
 
-.daily-sleep-hours-box, .daily-sleep-quality-box {
-  height: 100%;
+
+.average-hours-slept-box,
+.average-sleep-quality-box,  
+.daily-sleep-quality-box, 
+  .daily-sleep-hours-box  {
+  height: 32%;
   width: 100%;
   border-radius: 8%;
-  margin-bottom: -11%;
+}
+
+.hours-slept-data, .sleep-quality-data {
+  height: 20%;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 1%
 }
 
 .weekly-sleep-data-box {
-  height: 60%;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: baseline; 
+  margin-bottom: 2%
 }
 
-
-h4 {
-margin-top: 8%
-}
-
-.zzzz-img {
-  height: 75px;
-  margin-top: 13%
+.average-sleep-data-box {
+  height: 26%;
+  width: 100%;
+  border-radius: 8%;
 }
 
 /* -------------User--------------*/
@@ -225,7 +256,7 @@ margin-top: 8%
       0 0 100px #f09,
       0 0 150px #f09;
   }
- 0% {
+  0% {
     text-shadow:
       0 0 4px #fff,
       0 0 10px #fff,

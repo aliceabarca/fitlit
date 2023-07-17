@@ -4,12 +4,15 @@ import './css/styles.css';
 import {
   displayUsersName,
   showWeeklySleepData,
+  showDailySleepData,
+  showDailySleepQuality,
   showWeeklyWaterIntake,
   showUserData,
   showUserStepsVsAvg,
   showCurrentDayWaterIntake,
   displayWeeklyStepData,
   sleepAverage,
+  displayTodaysStepData,
 } from './domUpdates';
 import {
   getRandomUser,
@@ -19,7 +22,7 @@ import {
   getActivityDataByDate,
   getCurrentDate,
   getAllTimeAverage,
-  getWeekly
+  getWeekly,
 } from './model';
 import { getApiData } from './apiCalls';
 
@@ -84,20 +87,34 @@ function processUserData() {
   const userSleepData = getUserData(
     'sleepData',
     store.getKey('sleepData'),
-    user.id
-  )
-  const userActivityData = store.getKey('activityData');
-  const userWeeklyActivityData = getUserData(
-    'activityData',
-    userActivityData,
     user.id,
-  ).slice(-7);
-  showCurrentDayWaterIntake(getTodays('numOunces', userHydrationData, getCurrentDate(userHydrationData)));
+  );
+  const userActivityData = getUserData(
+    'activityData',
+    store.getKey('activityData'),
+    user.id,
+  );
+  const userWeeklyActivityData = userActivityData.slice(-7);
+  const dailyStepData = getTodays(
+    'numSteps',
+    userActivityData,
+    getCurrentDate(userActivityData),
+  );
+  showCurrentDayWaterIntake(
+    getTodays(
+      'numOunces',
+      userHydrationData,
+      getCurrentDate(userHydrationData),
+    ),
+  );
   showUserData(store.getKey('user'));
   showUserStepsVsAvg(userSteps, avg);
   displayUsersName(store.getKey('user'));
   showWeeklyWaterIntake(userHydrationData);
   displayWeeklyStepData(userWeeklyActivityData, user.dailyStepGoal);
+  displayTodaysStepData(dailyStepData, user.dailyStepGoal);
   showWeeklySleepData(userSleepData);
   sleepAverage(userSleepData);
+  showDailySleepData(userSleepData);
+  showDailySleepQuality(userSleepData);
 }
