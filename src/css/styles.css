@@ -82,14 +82,32 @@ p {
 }
 
 .steps-circle {
-  height: 250px;
-  width: 250px;
-  margin-top: 15%;
-  border-radius: 50%;
+ height: 230px;
+  width: 90%;
+  margin-top: 0px;
+  /* display: flex;
+  justify-content: center;
+  align-content: center; */
 }
 
-.average-comparison {
-  height: 44%
+#steps-progress-bar {
+  background-color: rgba(217, 217, 217, 0);
+}
+
+.donut-inner {
+  margin-top: -125px;
+  margin-bottom: 90px;
+}
+
+
+
+.avg-comparison {
+  height: 15%;
+}
+
+.weekly-steps {
+  height:auto;
+  width: auto;
 }
 
 /* -------------Water--------------*/
