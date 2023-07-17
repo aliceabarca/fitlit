@@ -74,6 +74,7 @@ export function getUserStepGoal(user) {
   return user.dailyStepGoal;
 }
 
+
 /* Water Data */
 
 /* Sleep Data */

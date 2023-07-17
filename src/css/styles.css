@@ -169,24 +169,18 @@ p {
 }
 
 .daily-sleep-hours-box, .daily-sleep-quality-box {
-  height: 100%;
+  height:20%;
   width: 100%;
   border-radius: 8%;
-  margin-bottom: -11%;
+  margin-bottom: 60%;
 }
 
 .weekly-sleep-data-box {
   height: 60%;
 }
 
-
 h4 {
 margin-top: 8%
-}
-
-.zzzz-img {
-  height: 75px;
-  margin-top: 13%
 }
 
 /* -------------User--------------*/

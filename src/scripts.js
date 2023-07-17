@@ -1,3 +1,4 @@
+import { displayUsersName, showWeeklySleepData, showWeeklyWaterIntake, showDailySleepData, showDailySleepQuality} from './domUpdates';
 import './images/glass-of-water.png';
 import './images/zzzz.png';
 import './css/styles.css';
@@ -98,4 +99,6 @@ function processUserData() {
   showWeeklyWaterIntake(userHydrationData);
   displayWeeklyStepData(userWeeklyActivityData, user.dailyStepGoal);
   showWeeklySleepData(userSleepData);
+  showDailySleepData(userSleepData);
+  showDailySleepQuality(userSleepData);
 }
