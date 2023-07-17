@@ -1,5 +1,5 @@
 import { WeeklyStepsVsGoal } from "./charts";
-import { getWeekly, getCurrentDate } from "./model";
+import { getWeekly, getCurrentDate, getAllTimeAverage } from "./model";
 const userInfo = document.querySelector('.data-box');
 const userStepsEl = document.querySelector('.user-steps .steps');
 const avgStepsEl = document.querySelector('.avg-steps .steps');
@@ -80,6 +80,8 @@ export function displayWeeklyStepData(weekData, goal) {
   WeeklyStepsVsGoal(weekData, goal)
 }
 
-export function sleepAverage() {
-  
+export function sleepAverage(sleep) {
+  const sleepQuality = getAllTimeAverage('sleepQuality', sleep);
+
+  allTimeSleepQuality.innerText = `${sleepQuality}`;
 }
