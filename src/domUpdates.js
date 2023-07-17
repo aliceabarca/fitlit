@@ -8,6 +8,8 @@ const usersName = document.querySelector('h2');
 const weeklyWaterIntake = document.querySelector('.weekly-water-box');
 const glassBox = document.querySelector('.glass-box');
 const weeklySleepBox = document.querySelector('.weekly-sleep-data-box');
+const allTimeSleepQuality = document.querySelector('.all-time-sleep-quality');
+const allTimeSleepHours = document.querySelector('.all-time-sleep-hours');
 
 export function displayUsersName(user) {
   const firstName = user.name.split(' ')[0]
