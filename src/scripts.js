@@ -4,6 +4,8 @@ import './css/styles.css';
 import {
   displayUsersName,
   showWeeklySleepData,
+  showDailySleepData,
+  showDailySleepQuality,
   showWeeklyWaterIntake,
   showUserData,
   showUserStepsVsAvg,
@@ -111,4 +113,6 @@ function processUserData() {
   displayWeeklyStepData(userWeeklyActivityData, user.dailyStepGoal);
   displayTodaysStepData(dailyStepData, user.dailyStepGoal);
   showWeeklySleepData(userSleepData);
+  showDailySleepData(userSleepData);
+  showDailySleepQuality(userSleepData);
 }

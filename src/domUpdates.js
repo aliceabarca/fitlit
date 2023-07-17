@@ -1,5 +1,5 @@
 import { WeeklyStepsVsGoal, stepProgressBar } from './charts';
-import { getWeekly, getCurrentDate } from './model';
+import { getWeekly, getCurrentDate, getTodays } from './model';
 const userInfo = document.querySelector('.data-box');
 const userStepsEl = document.querySelector('.user-steps .steps');
 const avgStepsEl = document.querySelector('.avg-steps .steps');
@@ -8,6 +8,8 @@ const usersName = document.querySelector('h2');
 const weeklyWaterIntake = document.querySelector('.weekly-water-box');
 const glassBox = document.querySelector('.glass-box');
 const weeklySleepBox = document.querySelector('.weekly-sleep-data-box');
+const dailySleepBox = document.querySelector('.daily-sleep-hours-box');
+const dailyQualitySleepBox = document.querySelector('.daily-sleep-quality-box');
 const stepBox = document.getElementById('current-steps');
 
 export function displayUsersName(user) {
@@ -88,4 +90,14 @@ export function displayWeeklyStepData(weekData, goal) {
 export function displayTodaysStepData(stepData, goal) {
   stepProgressBar(stepData, goal);
   stepBox.innerText = `${stepData} steps`;
+}
+
+export function showDailySleepData(sleep) {
+  const dailySleep = getTodays('hoursSlept', sleep, getCurrentDate(sleep))
+  dailySleepBox.innerText = `${dailySleep}`
+}
+
+export function showDailySleepQuality(sleep) {
+  const dailySleepQuality = getTodays('sleepQuality', sleep, getCurrentDate(sleep))
+  dailyQualitySleepBox.innerText = `${dailySleepQuality}`
 }
