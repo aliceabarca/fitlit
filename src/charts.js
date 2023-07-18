@@ -1,4 +1,5 @@
 import Chart from 'chart.js/auto';
+import { compareStepsWithGoal } from './model';
 
 export function WeeklyStepsVsGoal(weekData, goal) {
   new Chart(document.getElementById('weekly-steps-bar-chart'), {
@@ -22,7 +23,7 @@ export function WeeklyStepsVsGoal(weekData, goal) {
 export function stepProgressBar(stepData, goal) {
   let goalRemainder = 0;
 
-  if (goal - stepData > 0) {
+  if (compareStepsWithGoal(stepData, goal)) {
     goalRemainder = goal - stepData;
   }
 
