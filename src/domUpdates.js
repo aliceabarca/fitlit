@@ -1,8 +1,8 @@
 import { WeeklyStepsVsGoal, stepProgressBar } from './charts';
 import { getWeekly, getCurrentDate, getTodays } from './model';
 const userInfo = document.querySelector('.data-box');
-const userStepsEl = document.querySelector('.user-steps .steps');
-const avgStepsEl = document.querySelector('.avg-steps .steps');
+const userStepsEl = document.querySelector('.user-steps');
+const avgStepsEl = document.querySelector('.avg-steps');
 const waterIntake = document.querySelector('.water-intake');
 const usersName = document.querySelector('h2');
 const weeklyWaterIntake = document.querySelector('.weekly-water-box');
@@ -30,8 +30,8 @@ export function showUserData(user) {
 }
 
 export function showUserStepsVsAvg(userSteps, avg) {
-  userStepsEl.innerText = `Your Step Goal: ${userSteps}`;
-  avgStepsEl.innerText = `Average Step Goal: ${avg}`;
+  userStepsEl.innerText = `You: ${userSteps}`;
+  avgStepsEl.innerText = `Avg: ${avg}`;
 }
 
 export function showCurrentDayWaterIntake(currentIntake) {
