@@ -27,5 +27,5 @@ FitLit is a dashboard representation of a large dataset of users, their activity
 - JavaScript ES6/ES5.
 - CSS.
 - Chai/Mocha for testing.
-- GitHub for version contol.
+- GitHub for version control.
 
