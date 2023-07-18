@@ -169,7 +169,7 @@ p {
 }
 
 .date {
-  margin: 0px 0px 5px 0px;
+  margin: 5px 0px 5px 0px;
 }
 
 /* -------------Sleep--------------*/
@@ -203,7 +203,7 @@ p {
   flex-direction: row;
   justify-content: space-evenly;
   margin-top: 1%;
-  margin-bottom: 1%;
+  margin-bottom: 3%;
 }
 
 .weekly-sleep-data-box,
