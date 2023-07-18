@@ -111,3 +111,7 @@ export function showDailySleepQuality(sleep) {
 export function displayDistanceTraveled(distance) {
   distanceTraveledEl.innerText = `${distance} mi`;
 }
+
+export function displayTimeActive(time) {
+  timeActiveEl.innerText = `${time} mins`;
+}

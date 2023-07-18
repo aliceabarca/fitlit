@@ -13,6 +13,7 @@ import {
   displayWeeklyStepData,
   displayTodaysStepData,
   displayDistanceTraveled,
+  displayTimeActive,
 } from './domUpdates';
 import {
   getRandomUser,
@@ -23,6 +24,7 @@ import {
   getCurrentDate,
   getAllTimeAverage,
   getWeekly,
+  getMinutesActive,
 } from './model';
 import { getApiData } from './apiCalls';
 
@@ -95,6 +97,7 @@ function processUserData() {
     user.id,
   );
   const userWeeklyActivityData = userActivityData.slice(-7);
+  const mostRecentActivityData = userWeeklyActivityData.slice(-1)[0];
   const dailyStepData = getTodays(
     'numSteps',
     userActivityData,
@@ -116,5 +119,8 @@ function processUserData() {
   showWeeklySleepData(userSleepData);
   showDailySleepData(userSleepData);
   showDailySleepQuality(userSleepData);
-  displayDistanceTraveled(calculateDistanceTraveled(user, undefined, userActivityData));
+  displayDistanceTraveled(
+    calculateDistanceTraveled(user, undefined, userActivityData),
+  );
+  displayTimeActive(getMinutesActive(mostRecentActivityData));
 }
