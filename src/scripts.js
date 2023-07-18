@@ -12,6 +12,7 @@ import {
   showCurrentDayWaterIntake,
   displayWeeklyStepData,
   displayTodaysStepData,
+  displayDistanceTraveled,
 } from './domUpdates';
 import {
   getRandomUser,
@@ -115,4 +116,5 @@ function processUserData() {
   showWeeklySleepData(userSleepData);
   showDailySleepData(userSleepData);
   showDailySleepQuality(userSleepData);
+  displayDistanceTraveled(calculateDistanceTraveled(user, undefined, userActivityData));
 }

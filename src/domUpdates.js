@@ -3,6 +3,8 @@ import { getWeekly, getCurrentDate, getTodays } from './model';
 const userInfo = document.querySelector('.data-box');
 const userStepsEl = document.querySelector('.user-steps');
 const avgStepsEl = document.querySelector('.avg-steps');
+const distanceTraveledEl = document.querySelector('.distance-value');
+const timeActiveEl = document.querySelector('.active-value');
 const waterIntake = document.querySelector('.water-intake');
 const usersName = document.querySelector('h2');
 const weeklyWaterIntake = document.querySelector('.weekly-water-box');
@@ -93,11 +95,19 @@ export function displayTodaysStepData(stepData, goal) {
 }
 
 export function showDailySleepData(sleep) {
-  const dailySleep = getTodays('hoursSlept', sleep, getCurrentDate(sleep))
-  dailySleepBox.innerText = `${dailySleep}`
+  const dailySleep = getTodays('hoursSlept', sleep, getCurrentDate(sleep));
+  dailySleepBox.innerText = `${dailySleep}`;
 }
 
 export function showDailySleepQuality(sleep) {
-  const dailySleepQuality = getTodays('sleepQuality', sleep, getCurrentDate(sleep))
-  dailyQualitySleepBox.innerText = `${dailySleepQuality}`
+  const dailySleepQuality = getTodays(
+    'sleepQuality',
+    sleep,
+    getCurrentDate(sleep),
+  );
+  dailyQualitySleepBox.innerText = `${dailySleepQuality}`;
+}
+
+export function displayDistanceTraveled(distance) {
+  distanceTraveledEl.innerText = `${distance} mi`;
 }
