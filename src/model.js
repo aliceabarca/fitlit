@@ -5,10 +5,10 @@ export function getUserData(dataType, users, id) {
     dataType === 'hydrationData' ||
     dataType === 'sleepData' ||
     dataType === 'activityData'
-  )  {
+  ) {
     return users.filter(data => data.userID === id);
   } else {
-    return users.find((data) => data.id === id);
+    return users.find(data => data.id === id);
   }
 }
 
@@ -20,110 +20,65 @@ export function getRandomUser(users) {
   return getUserData('users', users, getRandomID(users));
 }
 
-/* Step Data */
-
-export function getAllAvgSteps(users) {
-  return (
-    users.reduce((acc, user) => (acc += user.dailyStepGoal), 0) / users.length
-  );
+export function getCurrentDate(userData) {
+  return userData[userData.length - 1].date;
 }
 
-export function getUserStepGoal(user) {
-  return user.dailyStepGoal;
-}
-
-/* Water Data */
-
-export function getAverageWater(userData) {
+export function getAllTimeAverage(key, userData) {
   if (!userData.length) {
     return 0;
   }
 
-  return Math.round(
-    userData.reduce((sum, date) => sum + date.numOunces, 0) / userData.length
-  );
+  const avg =
+    userData.reduce((sum, date) => sum + date[key], 0) / userData.length;
+
+  if (key === 'numOunces' || key === 'dailyStepGoal') {
+    return Math.round(avg);
+  } else {
+    return parseFloat(avg.toFixed(1));
+  }
 }
 
-export function getCurrentWaterDate(userData) {
-  return userData[userData.length - 1].date;
-}
-
-export function getDailyWater(userHydrationData, date) {
-  const userData = userHydrationData.find((data) => data.date === date);
+export function getTodays(key, userData, date) {
+  userData = userData.find(data => data.date === date);
 
   if (!userData) {
     return 0;
   }
 
-  return userData.numOunces;
+  return userData[key];
 }
 
-export function getWeeklyWater(userData) {
-  userData = userData.slice(-7, -1);
+export function getWeekly(key, userData, date) {
+  userData.sort((a, b) => new Date(a.date) - new Date(b.date));
 
-  userData.sort((a, b) => new Date(b.date) - new Date(a.date));
+  const indexOfDate = userData.findIndex(entry => entry.date === date);
 
-  return userData.reduce((week, day) => {
-    week[day.date] = day.numOunces;
-    return week;
-  }, {});
-}
-
-/* Sleep Data */
-
-export function getAvgSleepPerDay(userData) {
-  const avg =
-    userData.reduce((acc, userData) => (acc += userData.hoursSlept), 0) /
-    userData.length;
-
-  if (!userData.length) {
-    return 0;
+  let weeklyData;
+  if (userData.length <= 7) {
+    weeklyData = userData.slice(0, indexOfDate);
+  } else {
+    weeklyData = userData.slice(indexOfDate - 6, indexOfDate);
   }
 
-  return parseFloat(avg.toFixed(1));
-}
-
-export function getAllAvgSleepQuality(userData) {
-  const avg =
-    userData.reduce((acc, user) => (acc += user.sleepQuality), 0) /
-    userData.length;
-  return parseFloat(avg.toFixed(1));
-}
-
-export function getDailySleep(sleepData, data) {
-  const userData = sleepData.find((date) => data === date.date);
-
-  return userData.hoursSlept;
-}
-
-export function getSleepQuality(sleepData, date) {
-  const userData = sleepData.find((data) => data.date === date);
-  return userData.sleepQuality;
-}
-
-export function getWeeklySleep(userData, date) {
-  const startCount = userData.findIndex((entry) => entry.date === date);
-  const weeklyData = userData.slice(startCount, startCount + 7).reverse();
-
-  return weeklyData.reduce((acc, day) => {
-    acc[day.date] = day.hoursSlept;
-    return acc;
-  }, {});
-}
-
-export function getWeeklySleepQuality(userData) {
-  userData.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-  return userData.reduce((week, day) => {
-    week[day.date] = day.hoursSlept;
+  weeklyData.reverse();
+  return weeklyData.reduce((week, day) => {
+    week[day.date] = day[key];
     return week;
   }, {});
 }
-  /* Activity Data */
+
+/* Step Data */
+
+export function getUserStepGoal(user) {
+  return user.dailyStepGoal;
+}
+
+/* Activity Data */
 
 export function getActivityDataByDate(activityData, id, date) {
   return getUserData('activityData', activityData, id).find(
-    (data) => data.date === date,
+    data => data.date === date
   );
 }
 
