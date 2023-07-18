@@ -206,7 +206,8 @@ p {
   margin-bottom: 1%;
 }
 
-.weekly-sleep-data-box {
+.weekly-sleep-data-box,
+.weekly-sleep-quality-box {
   width: 100%;
   flex-direction: row;
   justify-content: space-evenly;
