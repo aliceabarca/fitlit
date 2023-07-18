@@ -40,7 +40,7 @@ export function showUserData(user) {
 
 export function showUserStepsVsAvg(userSteps, avg) {
   userStepsEl.innerText = `Your Step Goal: ${userSteps}`;
-  avgStepsEl.innerText = `Average Step Goal: ${avg}`;
+  avgStepsEl.innerText = `Fitlit's Average Step Goal: ${avg}`;
 }
 
 export function showCurrentDayWaterIntake(currentIntake) {
@@ -76,7 +76,7 @@ export function showWeeklyWaterIntake(userHydrationData) {
                                     <p class="date" >${day.slice(5)}</p>
                                     <p class="weekly-ounces">${
                                       weeklyWater[day]
-                                    }</p>
+                                    }oz</p>
                                     </article>`;
   });
 }
@@ -87,7 +87,7 @@ export function showWeeklySleepData(sleep) {
   sleeps.forEach(day => {
     weeklySleepBox.innerHTML += `<article class="week-day" >
     <p class="date" >${day.slice(5)}</p>
-    <p class="weekly-ounces">${weeklySleep[day]}</p>
+    <p class="weekly-ounces">${weeklySleep[day]}h</p>
     </article>`;
   });
 }
@@ -97,7 +97,7 @@ export function displayWeeklyStepData(weekData, goal) {
 }
 export function displayTodaysStepData(stepData, goal) {
   stepProgressBar(stepData, goal);
-  stepBox.innerText = `${stepData} steps`;
+  stepBox.innerText = `${stepData} Steps`;
 }
 
 export function showDailySleepData(sleep) {
