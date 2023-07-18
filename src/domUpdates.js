@@ -123,7 +123,7 @@ export function sleepAverage(sleep) {
   allTimeSleepQuality.innerText = `${sleepQuality}`;
 }
 
-export function weeklyQualitySleep() {
+export function weeklyQualitySleep(sleep) {
   const weeklyQuality = getWeekly('sleepQuality', sleep, getCurrentDate(sleep));
   const sleepQuality = Object.keys(weeklyQuality);
   sleepQuality.forEach(day => {
