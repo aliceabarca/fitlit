@@ -1,4 +1,5 @@
 # FitLit Starter Kit
+<img width="1419" alt="Screenshot 2023-07-17 at 9 16 13 PM" src="https://github.com/JoshBennett793/fitlit/assets/123991375/15c8a0d9-3a32-4607-aed2-f0f9d2c1b249">
 
 # SUMARRY:
 FitLit is a dashboard representation of a large dataset of users, their activity, sleep and hydration data. The goal of this project was to take multiple datasets and display it for individual user in an easy to understand visual representation. This is similar to what you would get from a fitness tracker like Apple Watch or Fitbit.
