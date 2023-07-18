@@ -96,7 +96,7 @@ export function compareStepsWithGoal(userData, activityData) {
 
 // Accepts a single user's data as userData param
 // Accepts all activity data
-export function calculateDistanceTraveled(userData, date, activityData) {
+export function calculateDistanceTraveled(userData, date = '07/01/2023', activityData) {
   const mile = 5280;
   activityData = getActivityDataByDate(activityData, userData.id, date);
   const distance = (userData.strideLength * activityData.numSteps) / mile;
