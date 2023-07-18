@@ -1,5 +1,10 @@
 import { WeeklyStepsVsGoal, stepProgressBar } from './charts';
-import { getWeekly, getCurrentDate, getTodays } from './model';
+import {
+  getWeekly,
+  getCurrentDate,
+  getTodays,
+  getAllTimeAverage,
+} from './model';
 const userInfo = document.querySelector('.data-box');
 const userStepsEl = document.querySelector('.user-steps');
 const avgStepsEl = document.querySelector('.avg-steps');
@@ -10,9 +15,14 @@ const usersName = document.querySelector('h2');
 const weeklyWaterIntake = document.querySelector('.weekly-water-box');
 const glassBox = document.querySelector('.glass-box');
 const weeklySleepBox = document.querySelector('.weekly-sleep-data-box');
+const allTimeSleepQuality = document.querySelector(
+  '.average-sleep-quality-box',
+);
+const allTimeSleepHours = document.querySelector('.average-hours-sleep-box');
 const dailySleepBox = document.querySelector('.daily-sleep-hours-box');
 const dailyQualitySleepBox = document.querySelector('.daily-sleep-quality-box');
 const stepBox = document.getElementById('current-steps');
+const weeklySleepQuality = document.querySelector('.weekly-sleep-quality-box');
 
 export function displayUsersName(user) {
   const firstName = user.name.split(' ')[0];
@@ -69,7 +79,7 @@ export function showWeeklyWaterIntake(userHydrationData) {
                                     <p class="date" >${day.slice(5)}</p>
                                     <p class="weekly-ounces">${
                                       weeklyWater[day]
-                                    }</p>
+                                    }oz</p>
                                     </article>`;
   });
 }
@@ -80,7 +90,7 @@ export function showWeeklySleepData(sleep) {
   sleeps.forEach(day => {
     weeklySleepBox.innerHTML += `<article class="week-day" >
     <p class="date" >${day.slice(5)}</p>
-    <p class="weekly-ounces">${weeklySleep[day]}</p>
+    <p class="weekly-ounces">${weeklySleep[day]}h</p>
     </article>`;
   });
 }
@@ -88,10 +98,9 @@ export function showWeeklySleepData(sleep) {
 export function displayWeeklyStepData(weekData, goal) {
   WeeklyStepsVsGoal(weekData, goal);
 }
-
 export function displayTodaysStepData(stepData, goal) {
   stepProgressBar(stepData, goal);
-  stepBox.innerText = `${stepData} steps`;
+  stepBox.innerText = `${stepData} Steps`;
 }
 
 export function showDailySleepData(sleep) {
@@ -100,6 +109,31 @@ export function showDailySleepData(sleep) {
 }
 
 export function showDailySleepQuality(sleep) {
+  const dailySleepQuality = getTodays(
+    'sleepQuality',
+    sleep,
+    getCurrentDate(sleep),
+  );
+  dailyQualitySleepBox.innerText = `${dailySleepQuality}`;
+}
+
+export function sleepAverage(sleep) {
+  const sleepHours = getAllTimeAverage('hoursSlept', sleep);
+  const sleepQuality = getAllTimeAverage('sleepQuality', sleep);
+
+  allTimeSleepHours.innerText = `${sleepHours}`;
+  allTimeSleepQuality.innerText = `${sleepQuality}`;
+}
+
+export function weeklyQualitySleep(sleep) {
+  const weeklyQuality = getWeekly('sleepQuality', sleep, getCurrentDate(sleep));
+  const sleepQuality = Object.keys(weeklyQuality);
+  sleepQuality.forEach(day => {
+    weeklySleepQuality.innerHTML += `<article class="week-day" >
+    <p class="date" >${day.slice(5)}</p>
+    <p class="weekly-ounces">${weeklyQuality[day]}</p>
+    </article>`;
+  });
   const dailySleepQuality = getTodays(
     'sleepQuality',
     sleep,
