@@ -86,8 +86,8 @@ export function getMinutesActive(activityData) {
   return activityData.minutesActive;
 }
 
-export function compareStepsWithGoal(userData, activityData) {
-  if (userData.dailyStepGoal <= activityData.numSteps) {
+export function compareStepsWithGoal(stepData, goal) {
+  if (stepData <= goal) {
     return true;
   }
 
