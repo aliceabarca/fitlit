@@ -22,10 +22,18 @@ FitLit is a dashboard representation of a large dataset of users, their activity
 - Api fetch calls.
 - Working with third-party libraries.
 - Closures.
+- Implement a robust testing suite using TDD.
+- Ensure your app is following best practices for accessibility.
+- Incorporate Webpack to streamline workflow process.
+- Error handling.
+- Accessible Rich Internet Applications (ARIA).
 
 # Technology Used
 - JavaScript ES6/ES5.
 - CSS.
 - Chai/Mocha for testing.
 - GitHub for version control.
+- Third-party libraries used:
+  - Chart.js
+  - Leaflet.js
 
